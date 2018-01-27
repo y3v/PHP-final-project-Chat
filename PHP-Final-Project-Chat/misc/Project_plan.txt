@@ -1,0 +1,85 @@
+cd C:\Users\olile\Documents\GitHub\PHP-final-project-Chat\PHP-Final-Project-Chat
+Run Server@localhost: php -S localhost:8000
+
+
+Chat system :
+Sending direct messages to a user asynchronously.
+
+	FrontEnd
+	- html/js interface.
+	- Messages (general)
+		- Processes messages with an ajax request.
+		- If recipient, messages are on the left
+		- If user, messages are on the right & colored
+		- Send button fires javascript function that sends AJAX post request to server. response data (if query successfully executed) would be a 'message' object
+			-> if message.recipientId = userId, isRecipient = true;
+			-> else { isRecipient = false; || isSender = true;}
+		-> 'new message notification' callback function if recipient
+
+	-New message:
+		-> if message area focused, send AJAX post request to update state of the message to 'read'
+
+
+
+	PHP
+		General :
+			- All SQL requests are transaction.
+			- onLogin(){
+				1. set isLoggedIn to TRUE;
+				2. sets friends list || users w/ conversation in session;
+
+				}
+
+			- When user logs in & wants to access messages with a user, retrieve last 20 messages
+			- onLogout(){
+				1. set isLoggedIn to FALSE;
+			}
+
+		Classes :
+			Message:
+				-> senderId
+				-> recipientId
+				-> messageContent
+				-> timestamp
+				-> is_deleted
+				-> viewed_by_recipient
+
+
+
+
+	SQL
+	Tables :
+		user
+		-> id
+		-> isLoggedIn
+		-> isTyping
+
+		message
+		-> id
+		-> sender_id (id-user1)
+		-> recipient_id (id-user2)
+		-> timestamp
+		-> message
+		-> is_deleted
+		(optional)
+		-> viewed_by_recipient
+
+Timeline :
+
+// UNCOMMENT 'extension=php_pdo_mysql.dll' IN php.ini
+cli configuration :
+// go to project folder
+~>composer require doctrine/orm:^2.5
+// update composer.json
+~>vendor\bin\doctrine
+// NOTE : you need to convert 'vendor' folder to LIBRARY folder
+// You need to configure the bootstrap.php
+~>composer dump-autoload
+~> doctrine orm:validate-schema
+~> doctrine orm:schema-tool:update --dump-sql --force
+// creates table for you || RECREATES/UPDATES database. we can change the entities and run this command to update it.
+
+__toString (){
+ $format = "User (id: %s, firstname: %s, lastname: %s, role: %s)";
+ return sprintf($format, $this->id, $this->firstname, $this->lastname, $this->role);
+}

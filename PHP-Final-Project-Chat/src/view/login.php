@@ -1,11 +1,12 @@
 <?php
-require_once "src/controller/global_actions.php";
-// include "src/view/login.php";
+require_once "../controller/global_actions.php";
 ?>
+
+
 <!DOCTYPE html>
 <html>
   <head lang="en">
-    <title>first-mockup</title>
+    <title>Login</title>
     <meta charset="utf-8">
     <meta name="author" content="Olivier Lepage">
     <meta name="description" content="description of this pages content">
@@ -13,8 +14,6 @@ require_once "src/controller/global_actions.php";
 
     <meta name="robots" content="index,follow"> <!-- default behavior: index and follows all links on page. -->
     <!-- Other behaviors: *noindex,nofollow* || *index,nofollow* || *noindex, follow* -->
-    <link rel="stylesheet" href="style/main.css">
-    <script src="script/script.js" type="text/javascript" charset="utf-8"></script>
     <link rel="canonical" href="">
 
 
@@ -25,11 +24,18 @@ require_once "src/controller/global_actions.php";
   </head>
   <body>
     <header>
-      <h1>HOMEPAGE</h1>
+      <h1>Login here</h1>
+
       <?php getSiteMenu() ?>
     </header>
     <main>
-      <a href="http://localhost:8000/src/controller/controller.php/?page=login" rel="follow">Login</a><br>
+      <form action="http://localhost:8000/src/controller/controller.php" method="POST">
+        uname/email: <input type="text" id="" name="uname" value=""><br>
+        pass: <input type="password" id="" name="pword" value=""><br>
+        Remember me? <input type="checkbox" id="" name="remember_me" value=""><br>
+        <input type="submit" id="" name="login" value="Login"><br>
+        <a href="http://localhost:8000/src/controller/controller.php?page=signup" rel="follow">New user? Sign up!</a> <br>
+      </form>
     </main>
     <footer>
 

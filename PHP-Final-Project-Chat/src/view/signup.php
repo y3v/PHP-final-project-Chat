@@ -1,6 +1,5 @@
 <?php
-require_once "src/controller/global_actions.php";
-// include "src/view/login.php";
+require_once "../controller/global_actions.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,14 +24,22 @@ require_once "src/controller/global_actions.php";
   </head>
   <body>
     <header>
-      <h1>HOMEPAGE</h1>
+      <h1>SIGN UP</h1>
       <?php getSiteMenu() ?>
     </header>
     <main>
-      <a href="http://localhost:8000/src/controller/controller.php/?page=login" rel="follow">Login</a><br>
+      <form action="http://localhost:8000/src/controller/controller.php" method="POST">
+        uname: <input type="text" id="" name="uname" value=""><br>
+        pass: <input type="password" id="" name="pword" value=""><br>
+        confirm pass: <input type="password" id="" name="pword" value=""><br>
+        email: <input type="text" id="" name="uname" value=""><br>
+        <input type="submit" id="" name="signup" value="Signup"><br>
+      </form>
     </main>
     <footer>
 
     </footer>
   </body>
 </html>
+
+in signup.php
