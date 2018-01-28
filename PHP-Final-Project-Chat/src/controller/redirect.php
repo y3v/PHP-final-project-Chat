@@ -1,7 +1,9 @@
 <?php
 session_start();
-require_once "global_actions.php";
-//include "src/view/chat.php";
+
+if (isset($_SESSION['errorMessages'])){
+  unset($_SESSION['errorMessages']);
+}
 
 if (isset($_GET["page"])){
   switch ($_GET["page"]){
@@ -28,23 +30,4 @@ if (isset($_GET["page"])){
     header('location: http://localhost:8000/index.php');
     break;
   }
-}
-
-if (isset($_POST['signup'])){
-
-}
-
-if (isset($_POST['login'])){
-  if (true){ // validate username + password
-    // set userid + username in session
-
-    session_name($_COOKIE['PHPSESSID']);
-    $_SESSION['username'] = 'paco';
-    header('location: http://localhost:8000/index.php');
-  }
-}
-
-if (isset($_POST['logout'])){
-  session_destroy();
-  header('location: http://localhost:8000/index.php');
 }

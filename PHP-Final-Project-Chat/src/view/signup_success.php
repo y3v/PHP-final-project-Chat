@@ -1,12 +1,12 @@
 <?php
-session_start();
-require_once "src/controller/global_actions.php";
-// include "src/view/login.php";
+require_once "../controller/global_actions.php";
 ?>
+
+
 <!DOCTYPE html>
 <html>
   <head lang="en">
-    <title>first-mockup</title>
+    <title>Login</title>
     <meta charset="utf-8">
     <meta name="author" content="Olivier Lepage">
     <meta name="description" content="description of this pages content">
@@ -14,8 +14,6 @@ require_once "src/controller/global_actions.php";
 
     <meta name="robots" content="index,follow"> <!-- default behavior: index and follows all links on page. -->
     <!-- Other behaviors: *noindex,nofollow* || *index,nofollow* || *noindex, follow* -->
-    <link rel="stylesheet" href="style/main.css">
-    <script src="script/script.js" type="text/javascript" charset="utf-8"></script>
     <link rel="canonical" href="">
 
 
@@ -26,12 +24,14 @@ require_once "src/controller/global_actions.php";
   </head>
   <body>
     <header>
-      <h1>HOMEPAGE</h1>
+      <h1>ACCOUNT CREATED</h1>
+
       <?php
       getWelcome();
       getSiteMenu(); ?>
     </header>
     <main>
+      <p>Registered successfully! You can get the verified status by clicking on the link we just sent you via email.</p>
     </main>
     <footer>
 

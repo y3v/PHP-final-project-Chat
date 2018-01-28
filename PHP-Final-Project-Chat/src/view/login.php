@@ -1,5 +1,15 @@
 <?php
 require_once "../controller/global_actions.php";
+session_start();
+
+if (isset($_SESSION['refreshed']) && isset($_SESSION['errorMessages'])){
+  unset($_SESSION['errorMessages']);
+  unset($_SESSION['refreshed']);
+}
+else
+  $_SESSION['refreshed'] = true;
+
+var_dump($_SESSION);
 ?>
 
 
@@ -24,17 +34,34 @@ require_once "../controller/global_actions.php";
   </head>
   <body>
     <header>
-      <h1>Login here</h1>
+      <h1>LOGIN HERE</h1>
 
-      <?php getSiteMenu() ?>
+      <?php
+      getWelcome();
+      getSiteMenu(); ?>
     </header>
     <main>
-      <form action="http://localhost:8000/src/controller/controller.php" method="POST">
-        uname/email: <input type="text" id="" name="uname" value=""><br>
-        pass: <input type="password" id="" name="pword" value=""><br>
+      <form action="http://localhost:8000/src/controller/login.php" method="POST">
+        uname: <input type="text" id="" name="uname" value="">
+          <?php
+          if(isset($_SESSION['errorMessages']['uname'])) {
+            getError($_SESSION['errorMessages']['uname']);
+          }?>
+        <br>
+        pass: <input type="password" id="" name="pword" value="">
+          <?php
+          if(isset($_SESSION['errorMessages']['pword'])) {
+            getError($_SESSION['errorMessages']['pword']);
+          }?>
+        <br>
         Remember me? <input type="checkbox" id="" name="remember_me" value=""><br>
         <input type="submit" id="" name="login" value="Login"><br>
-        <a href="http://localhost:8000/src/controller/controller.php?page=signup" rel="follow">New user? Sign up!</a> <br>
+          <?php
+          if(isset($_SESSION['errorMessages']['loginError'])) {
+            getError($_SESSION['errorMessages']['loginError']);
+          }?>
+        <br>
+        <a href="http://localhost:8000/src/controller/redirect.php?page=signup" rel="follow">New user? Sign up!</a> <br>
       </form>
     </main>
     <footer>

@@ -1,5 +1,15 @@
 <?php
 require_once "../controller/global_actions.php";
+session_start();
+
+if (isset($_SESSION['refreshed']) && isset($_SESSION['errorMessages'])){
+  unset($_SESSION['errorMessages']);
+  unset($_SESSION['refreshed']);
+}
+else
+  $_SESSION['refreshed'] = true;
+
+var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,15 +35,62 @@ require_once "../controller/global_actions.php";
   <body>
     <header>
       <h1>SIGN UP</h1>
-      <?php getSiteMenu() ?>
+      <?php
+      getWelcome();
+      getSiteMenu(); ?>
     </header>
     <main>
-      <form action="http://localhost:8000/src/controller/controller.php" method="POST">
-        uname: <input type="text" id="" name="uname" value=""><br>
-        pass: <input type="password" id="" name="pword" value=""><br>
-        confirm pass: <input type="password" id="" name="pword" value=""><br>
-        email: <input type="text" id="" name="uname" value=""><br>
-        <input type="submit" id="" name="signup" value="Signup"><br>
+      <form action="http://localhost:8000/src/controller/signup.php" method="POST">
+        uname: <input type="text" id="" name="uname" value="">
+          <?php
+          if(isset($_SESSION['errorMessages']['uname'])) {
+            getError($_SESSION['errorMessages']['uname']);
+          }
+          else if (isset($_SESSION['errorMessages']['unameTaken'])) {
+            getError($_SESSION['errorMessages']['unameTaken']);
+          }
+          ?>
+        <br>
+        pass: <input type="password" id="" name="pword" value="">
+          <?php
+          if(isset($_SESSION['errorMessages']['pword'])) {
+            getError($_SESSION['errorMessages']['pword']);
+          }?>
+        <br>
+        confirm pass: <input type="password" id="" name="pword2" value="">
+          <?php
+          if(isset($_SESSION['errorMessages']['pword2'])) {
+            getError($_SESSION['errorMessages']['pword2']);
+          }?>
+        <br>
+        Fname: <input type="text" id="" name="fname" value="">
+          <?php
+          if(isset($_SESSION['errorMessages']['fname'])) {
+            getError($_SESSION['errorMessages']['fname']);
+          }?>
+        <br>
+        Lname: <input type="text" id="" name="lname" value="">
+          <?php
+          if(isset($_SESSION['errorMessages']['lname'])) {
+            getError($_SESSION['errorMessages']['lname']);
+          }?>
+        <br>
+        email: <input type="email" id="" name="email" value="">
+          <?php
+          if(isset($_SESSION['errorMessages']['email'])) {
+            getError($_SESSION['errorMessages']['email']);
+          }
+          else if (isset($_SESSION['errorMessages']['emailUsed'])) {
+            getError($_SESSION['errorMessages']['emailUsed']);
+          }
+          ?>
+        <br>
+        <input type="submit" id="" name="signup" value="Signup">
+          <?php
+          if(isset($_SESSION['errorMessages']['dbError'])) {
+            getError($_SESSION['errorMessages']['dbError']);
+          }?>
+        <br>
       </form>
     </main>
     <footer>

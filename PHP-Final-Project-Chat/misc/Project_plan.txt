@@ -79,7 +79,15 @@ cli configuration :
 ~> doctrine orm:schema-tool:update --dump-sql --force
 // creates table for you || RECREATES/UPDATES database. we can change the entities and run this command to update it.
 
+TO UPDATE SQL TABLES go to root folder
+vendor\bin\doctrine orm:schema-tool:update --dump-sql --force
+
 __toString (){
  $format = "User (id: %s, firstname: %s, lastname: %s, role: %s)";
  return sprintf($format, $this->id, $this->firstname, $this->lastname, $this->role);
 }
+
+
+session_start()
+session_unset() // deletes all vars inside
+session_destroy()
