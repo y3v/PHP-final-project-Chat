@@ -75,7 +75,7 @@ cli configuration :
 // NOTE : you need to convert 'vendor' folder to LIBRARY folder
 // You need to configure the bootstrap.php
 ~>composer dump-autoload
-~> doctrine orm:validate-schema
+~>  	
 ~> doctrine orm:schema-tool:update --dump-sql --force
 // creates table for you || RECREATES/UPDATES database. we can change the entities and run this command to update it.
 

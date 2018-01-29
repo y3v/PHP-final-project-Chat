@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once "global_actions.php";
 //include "src/view/chat.php";
@@ -6,15 +7,15 @@ require_once "global_actions.php";
 if (isset($_GET["page"])){
   switch ($_GET["page"]){
     case 'homepage':
-    header('location: http://localhost:8000/index.php');
+    header('location: PHP-Final-Project-Chat/index.php');
     break;
 
     case 'signup':
-    header('location: http://localhost:8000/src/view/signup.php');
+    header('location: PHP-Final-Project-Chat/src/view/signup.php');
     break;
 
     case 'login':
-    header('location: http://localhost:8000/src/view/login.php');
+    header('location: PHP-Final-Project-Chat/src/view/login.php');
     break;
 
     case 'logout':
@@ -25,7 +26,7 @@ if (isset($_GET["page"])){
       session_unset();
       session_destroy();
     }
-    header('location: http://localhost:8000/index.php');
+    header('location: PHP-Final-Project-Chat/index.php.php');
     break;
   }
 }
@@ -40,11 +41,11 @@ if (isset($_POST['login'])){
 
     session_name($_COOKIE['PHPSESSID']);
     $_SESSION['username'] = 'paco';
-    header('location: http://localhost:8000/index.php');
+    header('location: PHP-Final-Project-Chat/index.php');
   }
 }
 
 if (isset($_POST['logout'])){
   session_destroy();
-  header('location: http://localhost:8000/index.php');
+  header('location: PHP-Final-Project-Chat/index.php');
 }

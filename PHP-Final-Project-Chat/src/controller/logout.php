@@ -21,4 +21,4 @@ if (isset($_SESSION['username']) && isset($_SESSION['userId'])){
   session_unset();
   session_destroy();
 }
-header('location: http://localhost:8000/index.php');
+header('location: PHP-Final-Project-Chat/index.php');
