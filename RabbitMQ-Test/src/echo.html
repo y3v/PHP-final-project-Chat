@@ -83,10 +83,10 @@
       client.debug = pipe('#second');
 
       var print_first = pipe('#first', function(data) {
-          client.send('/queue/test', {"content-type":"text/plain"}, data);
+          client.send('/exchange/messages/testQueue', {"content-type":"text/plain"}, data);
       });
       var on_connect = function(x) {
-          id = client.subscribe("/queue/test", function(d) {
+          id = client.subscribe("/exchange/messages/testQueue", function(d) {
                print_first(d.body);
           });
       };
