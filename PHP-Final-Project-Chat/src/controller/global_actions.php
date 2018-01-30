@@ -7,12 +7,12 @@ function getSiteMenu(){
   echo '<ul class="header-menu">';
   for ($i=0; $i < sizeof($GLOBALS['siteMenu']); $i++) {
     if ($GLOBALS['siteMenu'][$i] == 'login' && isset($_SESSION['username']) && isset($_SESSION['userId'])){
-      echo '<li><a href="src/controller/logout.php">Logout</a></li>';
+      echo '<li><a href="http://localhost/PHP-Final-Project-Chat/src/controller/logout.php">Logout</a></li>';
     }
     else if ($GLOBALS['siteMenu'][$i] == 'signup' && isset($_SESSION['username']) && isset($_SESSION['userId']) ){
     }
     else
-      echo '<li><a href="src/controller/redirect.php?page=' . $GLOBALS['siteMenu'][$i] . '">' . $GLOBALS['siteMenu'][$i] . '</a></li>';
+      echo '<li><a href="http://localhost/PHP-Final-Project-Chat/src/controller/redirect.php?page=' . $GLOBALS['siteMenu'][$i] . '">' . $GLOBALS['siteMenu'][$i] . '</a></li>';
   }
   echo '</ul>';
 }

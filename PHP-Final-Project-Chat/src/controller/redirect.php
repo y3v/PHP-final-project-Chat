@@ -8,15 +8,15 @@ if (isset($_SESSION['errorMessages'])){
 if (isset($_GET["page"])){
   switch ($_GET["page"]){
     case 'homepage':
-    header('location: ../../index.php');
+    header('location: http://localhost/PHP-Final-Project-Chat/index.php');
     break; 
 
     case 'signup':
-    header('location: ../view/signup.php');
+    header('location: http://localhost/PHP-Final-Project-Chat/src/view/signup.php');
     break;
 
     case 'login':
-    header('location: ../view/login.php');
+    header('location: http://localhost/PHP-Final-Project-Chat/src/view/login.php');
     break;
 
     case 'logout':
@@ -27,7 +27,7 @@ if (isset($_GET["page"])){
       session_unset();
       session_destroy();
     }
-    header('location: index.php');
+    header('location: http://localhost/PHP-Final-Project-Chat/index.php');
     break;
   }
 }
