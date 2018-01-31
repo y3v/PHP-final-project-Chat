@@ -1,10 +1,13 @@
-create database php_project;
+create database php_project_chat;
 
-CREATE USER 'yevoli'@'localhost' IDENTIFIED BY 'yevoli123';
+CREATE USER 'yevoli'@'%' IDENTIFIED BY 'yevoli123';
 
-GRANT ALL ON php_project.* TO 'yevoli'@'localhost' IDENTIFIED BY 'yevoli123';
+GRANT ALL PRIVILEGES ON php_project_chat.* TO 'yevoli'@'%'
+    IDENTIFIED BY 'yevoli123'
+    WITH GRANT OPTION;
+FLUSH PRIVILEGES;
 
-use php_project;
+use php_project_chat;
 
 create table user (
 id int AUTO_INCREMENT not null,
