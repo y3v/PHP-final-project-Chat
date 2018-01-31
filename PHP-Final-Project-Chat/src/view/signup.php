@@ -40,8 +40,8 @@ var_dump($_SESSION);
       getSiteMenu(); ?>
     </header>
     <main>
-      <form action="http://localhost:82/PHP-Final-Project-Chat/src/controller/signup.php" method="POST">
-      <!-- <form action="http://localhost:8000/src/controller/signup.php" method="POST"> -->
+      <!-- <form action="http://localhost:82/PHP-Final-Project-Chat/src/controller/signup.php" method="POST"> -->
+      <form action="http://voyd.sytes.net:8080/src/controller/signup.php" method="POST">
         uname: <input type="text" id="" name="uname" value="">
           <?php
           if(isset($_SESSION['errorMessages']['uname'])) {

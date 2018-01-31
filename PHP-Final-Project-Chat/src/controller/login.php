@@ -33,23 +33,23 @@ if (isset($_POST['login'])){
       $user->setIsLoggedOn(true);
       $userEntityManager->flush();
 
-      header('location: http://localhost:82/PHP-Final-Project-Chat/index.php');
+      //header('location: http://localhost:82/PHP-Final-Project-Chat/index.php');
       //header('location: http://localhost:8000/index.php');
-      //header('location: http://voyd.sytes.net:8080/index.php');
+      header('location: http://voyd.sytes.net:8080/index.php');
     }
     else{
       $GLOBALS['errorMessages']['loginError'] = 'Invalid username or password match';
       $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
-      header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
       //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
-      //header('location: http://voyd.sytes.net:8080/src/view/login.php');
+      //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
+      header('location: http://voyd.sytes.net:8080/src/view/login.php');
     }
   }
   else {
     $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
-    header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
     //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
-    //header('location: http://voyd.sytes.net:8080/src/view/login.php');
+    //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
+    header('location: http://voyd.sytes.net:8080/src/view/login.php');
   }
 }
 else if (isset($_GET['userId'])){
@@ -66,15 +66,15 @@ else if (isset($_GET['userId'])){
     $user->setIsLoggedOn(true);
     $userEntityManager->flush();
 
-    header('location: http://localhost:82/PHP-Final-Project-Chat/index.php');
     //header('location: http://localhost:82/PHP-Final-Project-Chat/index.php');
-    //header('location: http://voyd.sytes.net:8080/index.php');
+    //header('location: http://localhost:82/PHP-Final-Project-Chat/index.php');
+    header('location: http://voyd.sytes.net:8080/index.php');
   }
   else {
     $GLOBALS['errorMessages']['loginError'] = 'There was an error logging you in. Please try again later.';
     $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
-    header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
     //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
-    //header('location: http://voyd.sytes.net:8080/src/view/login.php');
+    //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
+    header('location: http://voyd.sytes.net:8080/src/view/login.php');
   }
 }

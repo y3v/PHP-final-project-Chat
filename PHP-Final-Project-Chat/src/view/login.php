@@ -41,8 +41,9 @@ var_dump($_SESSION);
       getSiteMenu(); ?>
     </header>
     <main>
-      <form action="http://localhost:82/PHP-Final-Project-Chat/src/controller/login.php" method="POST">
-      <!-- <form action="http://localhost:8000/src/controller/login.php" method="POST"> -->
+    <!--  <form action="http://localhost:82/PHP-Final-Project-Chat/src/controller/login.php" method="POST"> -->
+        <!-- <form action="http://localhost:8000/src/controller/login.php" method="POST"> -->
+      <form action="http://voyd.sytes.net:8080/src/controller/login.php" method="POST">
         uname: <input type="text" id="" name="uname" value="">
           <?php
           if(isset($_SESSION['errorMessages']['uname'])) {
@@ -62,8 +63,8 @@ var_dump($_SESSION);
             getError($_SESSION['errorMessages']['loginError']);
           }?>
         <br>
-        <a href="http://localhost:82/PHP-Final-Project-Chat/src/controller/redirect.php?page=signup" rel="follow">New user? Sign up!</a> <br>
-      	<!-- <a href="http://localhost:8000/src/controller/redirect.php?page=signup" rel="follow">New user? Sign up!</a> <br> -->
+        <!--<a href="http://localhost:82/PHP-Final-Project-Chat/src/controller/redirect.php?page=signup" rel="follow">New user? Sign up!</a> <br> -->
+      	<a href="http://http://voyd.sytes.net:8080/src/controller/redirect.php?page=signup" rel="follow">New user? Sign up!</a> <br>
       </form>
     </main>
     <footer>

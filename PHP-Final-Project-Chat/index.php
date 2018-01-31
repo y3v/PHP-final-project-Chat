@@ -29,25 +29,25 @@ require_once "src/controller/global_actions.php";
       <?php
       getWebsiteBanner();
       getWelcome();
-      getSiteMenu(); 
+      getSiteMenu();
       ?>
     </header>
     <main>
-    	<?php 
+    	<?php
     	$entityManager = require_once join(DIRECTORY_SEPARATOR, [__DIR__, 'bootstrap.php']);
-    	
+
     	use Tuto\Entity\User;
-    	
+
     	$userRepo = $entityManager->getRepository(User::class);
-    	
+
     	if (isset($_SESSION['username'])){
     	    echo "<h3>Who would you like to Chat with?</h3>";
-    	    
+
     	    $allUsers = $userRepo->findAll();
-    	    
+
     	    foreach ($allUsers as $user) {
-    	        echo "<h4 class='userChatList'><a href='
-            http://localhost:82/PHP-Final-Project-Chat/src/controller/redirect.php?page=chatroom&user=". $_SESSION['username'] ."&friend=" . $user->getUsername() . "
+    	      echo "<h4 class='userChatList'><a href='
+            http://voyd.sytes.net:8080/src/controller/redirect.php?page=chatroom&user=". $_SESSION['username'] ."&friend=" . $user->getUsername() . "
             '>" . $user->getUsername() . "  (" . $user->getFirstname() . " " .  $user->getLastname() .
             ")</a> [ ";
     	        if ($user->getIsLoggedOn()) {
@@ -61,7 +61,7 @@ require_once "src/controller/global_actions.php";
     	else{
     	    getSlideShow();
     	}
-    	
+
     	?>
     </main>
     <footer>

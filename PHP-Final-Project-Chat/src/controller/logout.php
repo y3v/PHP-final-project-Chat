@@ -21,6 +21,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['userId'])){
   session_unset();
   session_destroy();
 }
-header('location: http://localhost:82/PHP-Final-Project-Chat/index.php');
 //header('location: http://localhost:82/PHP-Final-Project-Chat/index.php');
-//header('location: http://voyd.sytes.net:8080/login.php');
+//header('location: http://localhost:82/PHP-Final-Project-Chat/index.php');
+header('location: http://voyd.sytes.net:8080/index.php');
