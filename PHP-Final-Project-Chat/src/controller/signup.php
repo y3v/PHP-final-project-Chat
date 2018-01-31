@@ -65,6 +65,7 @@ if ($validation){
 else {
   $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
   header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/signup.php');
+  //header('location: http://voyd.sytes.net:8080/src/view/signup.php');
   //header('location: http://localhost:8000/src/view/signup.php');
 }
 
@@ -73,16 +74,19 @@ if($dbValidation){
   $user = createUser($_POST['uname'],$_POST['email'] , $_POST['pword'], $_POST['fname'], $_POST['lname'], $logged = false);
   if ($user != false){
     header('location: http://localhost:82/PHP-Final-Project-Chat/src/controller/login.php?userId=' . $user->getId());
+    //header('location: http://voyd.sytes.net:8080/src/controller/login.php?userId=' . $user->getId());
   }
   else{
     $GLOBALS['errorMessages']['dbError'] = 'There was an error processing this request. Try again later.';
     $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
     header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/signup.php');
     //header('location: http://localhost:8000/src/view/signup.php');
+    //header('location: http://voyd.sytes.net:8080/src/view/signup.php');
   }
 }
 else{
   $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
   header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/signup.php');
+  //header('location: http://voyd.sytes.net:8080/src/view/signup.php');
   //header('location: http://localhost:8000/src/view/signup.php');
 }

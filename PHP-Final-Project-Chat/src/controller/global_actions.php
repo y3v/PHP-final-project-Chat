@@ -8,12 +8,14 @@ function getSiteMenu(){
   for ($i=0; $i < sizeof($GLOBALS['siteMenu']); $i++) {
     if ($GLOBALS['siteMenu'][$i] == 'login' && isset($_SESSION['username']) && isset($_SESSION['userId'])){
       echo '<li><a href="http://localhost:82/PHP-Final-Project-Chat/src/controller/logout.php">Logout</a></li>';
+      //echo '<li><a href="http://voyd.sytes.net:8080/src/controller/logout.php">Logout</a></li>';
       //echo '<li><a href="http://localhost/PHP-Final-Project-Chat/src/controller/logout.php">Logout</a></li>';
     }
     else if ($GLOBALS['siteMenu'][$i] == 'signup' && isset($_SESSION['username']) && isset($_SESSION['userId']) ){
     }
     else
       echo '<li><a href="http://localhost:82/PHP-Final-Project-Chat/src/controller/redirect.php?page=' . $GLOBALS['siteMenu'][$i] . '">' . $GLOBALS['siteMenu'][$i] . '</a></li>';
+      //echo '<li><a href="http://voyd.sytes.net:8080/src/controller/redirect.php?page=' . $GLOBALS['siteMenu'][$i] . '">' . $GLOBALS['siteMenu'][$i] . '</a></li>';
       // echo '<li><a href="http://localhost:82/PHP-Final-Project-Chat/src/controller/redirect.php?page=' . $GLOBALS['siteMenu'][$i] . '">' . $GLOBALS['siteMenu'][$i] . '</a></li>';
   }
   echo '</ul>';
@@ -32,10 +34,15 @@ function getError($message){
 }
 
 function getWebsiteBanner(){
-    echo 
+    echo
     '<div id="logo-box">
         <a class="" id="logo" href="http://localhost:82/PHP-Final-Project-Chat/index.php"><img src="http://localhost:82\PHP-Final-Project-Chat\src\view\images\logo.png" alt="Image of InstaChat Logo"></a>
     </div>';
+    /*
+    '<div id="logo-box">
+        <a class="" id="logo" href="http://voyd.sytes.net:8080/index.php"><img src="http://voyd.sytes.net:8080/src/view/images/logo.png" alt="Image of InstaChat Logo"></a>
+    </div>';
+    */
 }
 
 function getFooter(){
@@ -73,5 +80,5 @@ function getFooter(){
 }
 
 function getSlideShow(){
-    echo '<img class="slide-box" src="http://localhost:82\PHP-Final-Project-Chat\src\view\images\slide1.png" alt="Slide1"/>';
+    echo '<img class="slide-box" src="http://voyd.sytes.net:8080/src/view/images/slide1.png" alt="Slide1"/>';
 }
