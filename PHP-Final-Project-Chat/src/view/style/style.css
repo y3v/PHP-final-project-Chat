@@ -26,13 +26,44 @@
 
 .header-menu{
 	background-color:#1498d5;
-	padding:5px 0;
+	padding:10px 0;
 }
 
 .slide-box{
 	display:block;
 	margin:20px auto;
 	width:75%;
+}
+
+.userChatList{
+	width:50%;
+	text-align:center;
+	margin:auto;
+	background-color:#1498d5;
+	padding:10px 0;
+	border-bottom: 2px solid white;
+}
+
+.userChatList a{
+	text-decoration:none;
+	font-family:"Arial";
+	color:white;
+	width:100%;
+	display:inline-block;
+}
+
+.userChatList a:hover{
+	color:orange;
+}
+
+#whoChat{
+	text-align:center;
+	background-color:#1477d5;
+	width:50%;
+	text-align:center;
+	margin:auto;
+	border-bottom: 2px solid white;
+	padding:10px 0;
 }
 
 /***************FOOTER STYLES*****************/
@@ -42,6 +73,7 @@
 	background-color:#1498d5;
 	border-top: solid 5px #004747;
 	padding:10px 0;
+	margin-top:10px;
 }
 
 footer h3{

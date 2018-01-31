@@ -41,13 +41,13 @@ require_once "src/controller/global_actions.php";
     	$userRepo = $entityManager->getRepository(User::class);
 
     	if (isset($_SESSION['username'])){
-    	    echo "<h3>Who would you like to Chat with?</h3>";
-
+    	    echo "<h3 id='whoChat'>Who would you like to Chat with?</h3>";
+            $path = "localhost:82";
     	    $allUsers = $userRepo->findAll();
 
     	    foreach ($allUsers as $user) {
     	      echo "<h4 class='userChatList'><a href='
-            http://voyd.sytes.net:8080/src/controller/redirect.php?page=chatroom&user=". $_SESSION['username'] ."&friend=" . $user->getUsername() . "
+            http://". $path ."/src/controller/redirect.php?page=chatroom&user=". $_SESSION['username'] ."&friend=" . $user->getUsername() . "
             '>" . $user->getUsername() . "  (" . $user->getFirstname() . " " .  $user->getLastname() .
             ")</a> [ ";
     	        if ($user->getIsLoggedOn()) {

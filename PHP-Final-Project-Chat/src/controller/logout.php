@@ -2,6 +2,8 @@
 session_start();
 require_once "global_actions.php";
 require_once "user_service.php";
+$path = "localhost:82/PHP-Final-Project-Chat";
+
 
 if (isset($_SESSION['username']) && isset($_SESSION['userId'])){
   if (isset($_COOKIE[session_name()])){
@@ -23,4 +25,4 @@ if (isset($_SESSION['username']) && isset($_SESSION['userId'])){
 }
 //header('location: http://localhost:82/PHP-Final-Project-Chat/index.php');
 //header('location: http://localhost:82/PHP-Final-Project-Chat/index.php');
-header('location: http://voyd.sytes.net:8080/index.php');
+header('location: http://'. $path .'/index.php');

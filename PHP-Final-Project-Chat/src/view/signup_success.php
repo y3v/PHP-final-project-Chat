@@ -1,5 +1,6 @@
 <?php
 require_once "../controller/global_actions.php";
+$path = "localhost:82/PHP-Final-Project-Chat";
 ?>
 
 
