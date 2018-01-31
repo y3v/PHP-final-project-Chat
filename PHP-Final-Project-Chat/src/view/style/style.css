@@ -1,15 +1,149 @@
-*                               { margin: 0; padding: 0; }
-body                            { font: 12px "Lucida Grande", Sans-Serif; background: url(images/bg.png); }
-h2                              { color: #fa9f00; font: 30px Helvetica, Sans-Serif; margin: 0 0 10px 0; }
-#page-wrap                      { width: 500px; margin: 30px auto; position: relative; }
 
-#chat-wrap                      { border: 1px solid #eee; margin: 0 0 15px 0; }
-#chat-area                      { height: 300px; overflow: auto; border: 1px solid #666; padding: 20px; background: white; }
-#chat-area span                 { color: white; background: #333; padding: 4px 8px; -moz-border-radius: 5px; -webkit-border-radius: 8px; margin: 0 5px 0 0; }
-#chat-area p                    { padding: 8px 0; border-bottom: 1px solid #ccc; }
+#logo-box{
+	width:150px;
+	margin:auto;
+}
 
-#name-area                      { position: absolute; top: 12px; right: 0; color: white; font: bold 12px "Lucida Grande", Sans-Serif; text-align: right; }   
-#name-area span                 { color: #fa9f00; }
+#logo img{
+	width:100%;
+}
 
-#send-message-area p            { float: left; color: white; padding-top: 27px; font-size: 14px; }
-#sendie                         { border: 3px solid #999; width: 360px; padding: 10px; font: 12px "Lucida Grande", Sans-Serif; float: right; }
+.header-menu li{
+	display:inline-block;
+	width:33%;
+	text-align:center;
+}
+
+.header-menu a{
+	font-family:"Arial";
+	text-decoration:none;
+	color:white;
+}
+
+.header-menu a:hover{
+	color:orange;
+}
+
+.header-menu{
+	background-color:#1498d5;
+	padding:5px 0;
+}
+
+.slide-box{
+	display:block;
+	margin:20px auto;
+	width:75%;
+}
+
+/***************FOOTER STYLES*****************/
+
+/*Site hub styles*/
+#footer-container{ /*this container is necessary for viewports which are >1000px*/
+	background-color:#1498d5;
+	border-top: solid 5px #004747;
+	padding:10px 0;
+}
+
+footer h3{
+	font-size:30px;
+	text-align:center;
+	margin-top:0;
+	margin-bottom:15px;
+}
+
+footer a{
+	font-size:20px;
+	font-family:"Arial";
+}
+
+.site-hub ul{
+	margin-top:-20px;
+}
+
+.site-hub, .social{
+	padding: 0 15px;
+}
+
+footer li{
+	list-style:none;
+}
+.site-hub li{
+	float:left;
+	width:50%;
+	font-size:30px;
+	padding-bottom:10px;
+}
+
+.site-hub a{
+	color:white;
+	text-decoration:none;
+	-webkit-text-stroke: 0.33px #006969;
+	display:inline-block;
+	width:100%;
+}
+
+.site-hub a:hover{
+	color:rgba(255,127,80,0.9);
+}
+
+.social>div>ul{
+	display:flex;
+	display: -ms-flexbox;
+	justify-content:center;
+	-ms-flex-pack: center;
+	-ms-flex-wrap:wrap
+}
+
+.social img{
+	display:inline-block;
+	width:75%;
+}
+
+.social li{
+	width:25%;
+}
+
+.social h3{
+	padding:0;
+}
+.contact-phone a{
+	color:white;
+	text-decoration:none;
+}
+.contact-phone a:hover, .tab a:hover{
+	color: rgba(255,127,80,0.9);
+}
+
+/*******************************SERVICES PAGE********************************/
+#services-banner{
+	margin-top:5px;	
+	width:100%;
+}
+
+.site-hub li{
+		width:33%;
+	}
+	
+	.site-hub li:nth-child(3n+2){
+		text-align:center;
+	}
+	
+	.site-hub li:nth-child(3n+1){
+		text-align:left;
+	}
+	
+	.site-hub li:nth-child(3n+3){
+		text-align:right;
+	}
+	
+	.social div{
+		margin-top:20px;
+	}
+	
+	.contact-phone{
+		margin-top:50px;
+	}
+	.contact-phone a{
+		display:block;
+	}
+
