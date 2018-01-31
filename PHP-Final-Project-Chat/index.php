@@ -14,7 +14,7 @@ require_once "src/controller/global_actions.php";
 
     <meta name="robots" content="index,follow"> <!-- default behavior: index and follows all links on page. -->
     <!-- Other behaviors: *noindex,nofollow* || *index,nofollow* || *noindex, follow* -->
-    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="src\view\style\style.css">
     <script src="script/script.js" type="text/javascript" charset="utf-8"></script>
     <link rel="canonical" href="">
 
@@ -26,15 +26,46 @@ require_once "src/controller/global_actions.php";
   </head>
   <body>
     <header>
-      <h1>HOMEPAGE</h1>
       <?php
+      getWebsiteBanner();
       getWelcome();
-      getSiteMenu(); ?>
+      getSiteMenu(); 
+      ?>
     </header>
     <main>
+    	<?php 
+    	$entityManager = require_once join(DIRECTORY_SEPARATOR, [__DIR__, 'bootstrap.php']);
+    	
+    	use Tuto\Entity\User;
+    	
+    	$userRepo = $entityManager->getRepository(User::class);
+    	
+    	if (isset($_SESSION['username'])){
+    	    echo "<h3>Who would you like to Chat with?</h3>";
+    	    
+    	    $allUsers = $userRepo->findAll();
+    	    
+    	    foreach ($allUsers as $user) {
+    	        echo "<h4 class='userChatList'><a href='
+            http://localhost:82/PHP-Final-Project-Chat/src/controller/redirect.php?page=chatroom&user=". $_SESSION['username'] ."&friend=" . $user->getUsername() . "
+            '>" . $user->getUsername() . "  (" . $user->getFirstname() . " " .  $user->getLastname() .
+            ")</a> [ ";
+    	        if ($user->getIsLoggedOn()) {
+    	            echo "ONLINE";
+    	        }else{
+    	            echo "offline";
+    	        }
+    	        echo " ]</h4>";
+    	    }
+    	}
+    	else{
+    	    getSlideShow();
+    	}
+    	
+    	?>
     </main>
     <footer>
-
+		<?php getFooter()?>
     </footer>
   </body>
 </html>
