@@ -1,6 +1,8 @@
 <?php
 require_once "../controller/global_actions.php";
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 if (isset($_SESSION['refreshed']) && isset($_SESSION['errorMessages'])){
   unset($_SESSION['errorMessages']);
@@ -9,7 +11,7 @@ if (isset($_SESSION['refreshed']) && isset($_SESSION['errorMessages'])){
 else
   $_SESSION['refreshed'] = true;
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 $path = "localhost:82/PHP-Final-Project-Chat";
 ?>
@@ -26,6 +28,7 @@ $path = "localhost:82/PHP-Final-Project-Chat";
 
     <meta name="robots" content="index,follow"> <!-- default behavior: index and follows all links on page. -->
     <!-- Other behaviors: *noindex,nofollow* || *index,nofollow* || *noindex, follow* -->
+    <link rel="stylesheet" href="http://<?php echo $GLOBALS['path'];?>/src\view\style\style.css">
     <link rel="canonical" href="">
 
 
@@ -39,20 +42,21 @@ $path = "localhost:82/PHP-Final-Project-Chat";
       <h1>LOGIN HERE</h1>
 
       <?php
-      getWelcome();
-      getSiteMenu(); ?>
+      getWebsiteBanner();
+      //getWelcome();
+      getSiteMenu();?>
     </header>
     <main>
     <!--  <form action="http://localhost:82/PHP-Final-Project-Chat/src/controller/login.php" method="POST"> -->
         <!-- <form action="http://localhost:8000/src/controller/login.php" method="POST"> -->
       <form action="http://<?php echo $path; ?>/src/controller/login.php" method="POST">
-        uname: <input type="text" id="" name="uname" value="">
+        <label>Username:</label><input type="text" id="" name="uname" value="">
           <?php
           if(isset($_SESSION['errorMessages']['uname'])) {
             getError($_SESSION['errorMessages']['uname']);
           }?>
         <br>
-        pass: <input type="password" id="" name="pword" value="">
+        <label>Password:</label><input type="password" id="" name="pword" value="">
           <?php
           if(isset($_SESSION['errorMessages']['pword'])) {
             getError($_SESSION['errorMessages']['pword']);
@@ -70,7 +74,7 @@ $path = "localhost:82/PHP-Final-Project-Chat";
       </form>
     </main>
     <footer>
-
+		<?php getFooter();?>
     </footer>
   </body>
 </html>

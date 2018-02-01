@@ -1,7 +1,11 @@
+<?php 
+require_once "../controller/global_actions.php";
+?>
 <!DOCTYPE html>
 <html><head>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script src="script\stomp.js"></script>
+  <link rel="stylesheet" href="http://<?php echo $GLOBALS['path'];?>/\src\view\style\style.css">
   <style>
       .box {
           width: 440px;
@@ -39,6 +43,11 @@
           font-size: 0.8em;
       }
   </style>
+  <?php 
+  getWebsiteBanner();
+  //getWelcome();
+  getSiteMenu();
+  ?>
   <title>RabbitMQ Web STOMP Examples : Echo Server</title>
   <link href="main.css" rel="stylesheet" type="text/css"/>
 </head><body lang="en">
@@ -54,6 +63,10 @@
       <h2>Logs</h2>
       <div></div>
     </div>
+    
+    <footer>
+    	<?php getFooter();?>
+   	</footer>
 
     <script>
         var has_had_focus = false;

@@ -8,19 +8,19 @@ if (isset($_SESSION['errorMessages'])){
 
 if (isset($_GET["page"])){
   switch ($_GET["page"]){
-    case 'homepage':
+    case 'Homepage':
     //header('location: http://localhost:82/PHP-Final-Project-Chat/index.php');
     //header('location: http://localhost/PHP-Final-Project-Chat/index.php');
     header('location: http://'. $path .'/index.php');
     break;
 
-    case 'signup':
+    case 'Signup':
     //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/signup.php');
     //header('location: http://localhost/PHP-Final-Project-Chat/src/view/signup.php');
     header('location: http://'. $path .'/src/view/signup.php');
     break;
 
-    case 'login':
+    case 'Login':
     //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
     //header('location: http://localhost/PHP-Final-Project-Chat/src/view/login.php');
     header('location: http://'. $path .'/src/view/login.php');
@@ -32,7 +32,7 @@ if (isset($_GET["page"])){
         header('location: http://'. $path .'/src/view/chatroom.php?user=' . $_SESSION['username'] .'&friend=' . $_GET['friend']);
         break;
 
-    case 'logout':
+    case 'Logout':
     /*if (isset($_SESSION['username'])){
       if (isset($_COOKIE[session_name()])){
         setcookie(session_name(), '', time()-3600, '/');

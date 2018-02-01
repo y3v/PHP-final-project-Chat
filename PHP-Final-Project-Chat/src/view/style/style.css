@@ -1,4 +1,6 @@
-
+*{
+    box-sizing: border-box;
+}
 #logo-box{
 	width:150px;
 	margin:auto;
@@ -32,7 +34,7 @@
 .slide-box{
 	display:block;
 	margin:20px auto;
-	width:75%;
+	width:50%;
 }
 
 .userChatList{
@@ -42,6 +44,7 @@
 	background-color:#1498d5;
 	padding:10px 0;
 	border-bottom: 2px solid white;
+	height:60px;
 }
 
 .userChatList a{
@@ -50,11 +53,18 @@
 	color:white;
 	width:100%;
 	display:inline-block;
+	padding-top:10px;
 }
 
 .userChatList a:hover{
 	color:orange;
 }
+
+.status img{
+	width:10px;
+	margin-left:10px;
+}
+
 
 #whoChat{
 	text-align:center;
@@ -64,6 +74,24 @@
 	margin:auto;
 	border-bottom: 2px solid white;
 	padding:10px 0;
+}
+
+form{
+	margin-left:38%;
+}
+form label{
+	width:100px;
+	display:inline-block;
+	margin:10px 0;
+}
+
+form input[type="submit"]{
+	margin-top:10px;
+	border-radius:5px;
+	border: 2px solid #1477d5;
+	background-color: #1498d5;
+	width:100px;
+	padding:10px;
 }
 
 /***************FOOTER STYLES*****************/
