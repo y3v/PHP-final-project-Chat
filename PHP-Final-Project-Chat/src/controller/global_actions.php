@@ -1,6 +1,8 @@
 <?php
-session_start();
-$siteMenu = ['homepage','signup','login'];
+if(!isset($_SESSION)){
+    session_start();
+}
+$siteMenu = ['Homepage','Signup','Login'];
 $errorMessages = [];
 // $path = "localhost:82/PHP-Final-Project-Chat";
 $path = 'voyd.sytes.net:8080';
@@ -10,7 +12,7 @@ function getSiteMenu(){
   for ($i=0; $i < sizeof($GLOBALS['siteMenu']); $i++) {
     if ($GLOBALS['siteMenu'][$i] == 'login' && isset($_SESSION['username']) && isset($_SESSION['userId'])){
       //echo '<li><a href="http://localhost:82/PHP-Final-Project-Chat/src/controller/logout.php">Logout</a></li>';
-      echo '<li><a href='. $GLOBALS["path"] .'/src/controller/logout.php">Logout</a></li>';
+      echo '<li><a href=http://'. $GLOBALS["path"] .'/src/controller/logout.php>Logout</a></li>';
       //echo '<li><a href="http://localhost/PHP-Final-Project-Chat/src/controller/logout.php">Logout</a></li>';
     }
     else if ($GLOBALS['siteMenu'][$i] == 'signup' && isset($_SESSION['username']) && isset($_SESSION['userId']) ){

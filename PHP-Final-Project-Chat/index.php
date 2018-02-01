@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 require_once "src/controller/global_actions.php";
 // include "src/view/login.php";
 ?>
@@ -28,7 +30,7 @@ require_once "src/controller/global_actions.php";
     <header>
       <?php
       getWebsiteBanner();
-      getWelcome();
+      //getWelcome();
       getSiteMenu();
       ?>
     </header>
@@ -42,20 +44,20 @@ require_once "src/controller/global_actions.php";
 
     	if (isset($_SESSION['username'])){
     	    echo "<h3 id='whoChat'>Who would you like to Chat with?</h3>";
-            $path = "localhost:82";
+            $path = "localhost:82/PHP-final-project-Chat";
     	    $allUsers = $userRepo->findAll();
 
     	    foreach ($allUsers as $user) {
-    	      echo "<h4 class='userChatList'><a href='
+    	      echo "<div class='userChatList'><a href='
             http://". $path ."/src/controller/redirect.php?page=chatroom&user=". $_SESSION['username'] ."&friend=" . $user->getUsername() . "
             '>" . $user->getUsername() . "  (" . $user->getFirstname() . " " .  $user->getLastname() .
-            ")</a> [ ";
+            ")<span class='status'>";
     	        if ($user->getIsLoggedOn()) {
-    	            echo "ONLINE";
+    	            echo "<img src='http://". $GLOBALS['path'] ."/src/view/images/online.png' alt='http://". $GLOBALS['path'] ."/src/view/images/online.png'/>";
     	        }else{
-    	            echo "offline";
+    	            echo "<img src='http://". $GLOBALS['path'] ."/src/view/images/offline.png' alt='http://". $GLOBALS['path'] ."/src/view/images/online.png'/>";
     	        }
-    	        echo " ]</h4>";
+    	        echo "</span></a></div>";
     	    }
     	}
     	else{

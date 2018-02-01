@@ -1,7 +1,11 @@
+<?php 
+require_once "../controller/global_actions.php";
+?>
 <!DOCTYPE html>
 <html><head>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script src="script\stomp.js"></script>
+  <link rel="stylesheet" href="http://<?php echo $GLOBALS['path'];?>/\src\view\style\style.css">
   <style>
       .box {
           width: 440px;
@@ -39,9 +43,16 @@
           font-size: 0.8em;
       }
   </style>
+<head>
   <title>Instachat!</title>
   <link href="main.css" rel="stylesheet" type="text/css"/>
-</head><body lang="en">
+</head>
+<body lang="en">
+    <?php 
+      getWebsiteBanner();
+      //getWelcome();
+      getSiteMenu();
+      ?>
     <h1><a href="../../index.php">Instachat Room!</a></h1>
 
     <div id="first" class="box">
@@ -128,4 +139,7 @@
       },{"queue":"test"});
     </script>
 </body>
+<footer>
+    <?php getFooter();?>
+</footer>
 </html>
