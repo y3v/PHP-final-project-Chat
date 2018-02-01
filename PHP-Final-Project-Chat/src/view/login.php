@@ -22,9 +22,9 @@ $path = "localhost:82/PHP-Final-Project-Chat";
 <!DOCTYPE html>
 <html>
   <head lang="en">
-    <title>Login</title>
+    <title>Login - InstaChat!</title>
     <meta charset="utf-8">
-    <meta name="author" content="Olivier Lepage">
+    <meta name="author" content="Olivier Lepage & Yev Kantorovich">
     <meta name="description" content="description of this pages content">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- for responsive websites -->
 

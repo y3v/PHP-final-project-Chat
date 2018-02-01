@@ -3,6 +3,7 @@ require_once "../controller/global_actions.php";
 ?>
 <!DOCTYPE html>
 <html><head>
+  <title>InstaChat!</title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script src="script\stomp.js"></script>
   <link rel="stylesheet" href="http://<?php echo $GLOBALS['path'];?>/\src\view\style\style.css">
@@ -86,7 +87,7 @@ require_once "../controller/global_actions.php";
 			}
   </style>
 <head>
-  <title>Instachat!</title>
+  <title>Instachat with <?php echo $_GET['friend']?> </title>
   <link href="main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body lang="en">

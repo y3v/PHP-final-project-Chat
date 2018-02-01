@@ -8,9 +8,9 @@ require_once "src/controller/global_actions.php";
 <!DOCTYPE html>
 <html>
   <head lang="en">
-    <title>first-mockup</title>
+    <title>InstaChat!</title>
     <meta charset="utf-8">
-    <meta name="author" content="Olivier Lepage">
+    <meta name="author" content="Olivier Lepage & Yev Kantorovich">
     <meta name="description" content="description of this pages content">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- for responsive websites -->
 
