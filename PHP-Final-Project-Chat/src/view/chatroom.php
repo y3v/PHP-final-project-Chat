@@ -8,40 +8,76 @@ require_once "../controller/global_actions.php";
   <link rel="stylesheet" href="http://<?php echo $GLOBALS['path'];?>/\src\view\style\style.css">
   <style>
       .box {
-          width: 440px;
-          float: left;
-          margin: 0 20px 0 20px;
-      }
-
-      .box div, .box input {
-          border: 1px solid;
-          -moz-border-radius: 4px;
-          border-radius: 4px;
-          width: 100%;
-          padding: 5px;
-          margin: 3px 0 10px 0;
-      }
-
-      .box div {
-          border-color: grey;
-          height: 300px;
-          overflow: auto;
-      }
-
-      div code {
-          display: block;
-      }
-
-      #first div code {
-          -moz-border-radius: 2px;
-          border-radius: 2px;
-          border: 1px solid #eee;
-          margin-bottom: 5px;
-      }
-
-      #second div {
-          font-size: 0.8em;
-      }
+			width: 540px;
+			margin: auto;
+			}
+			
+			.box div, .box input {
+			border: 2px solid #1498d5;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			width: 100%;
+			padding: 5px;
+			margin: 3px 0 10px 0;
+			margin-left:0;
+			}
+			
+			code{
+			padding:3px;
+			font-family:"Arial";
+			}
+			
+			.box>div {
+			border: 2px solid #1498d5;
+			height: 300px;
+			overflow: auto;
+			}
+			
+			div code {
+			display: inline-block;
+			}
+			
+			#first div code {
+			-moz-border-radius: 2px;
+			border-radius: 2px;
+			border: 1px solid #eee;
+			margin-bottom: 5px;
+			}
+			
+			#second div {
+			font-size: 0.8em;
+			/* display:none; */
+			}
+			h1{
+			text-align:center;
+			}
+			h1 a{
+			text-decoration:none;
+			}
+			
+			.userMsg{
+			    height:initial;
+			}
+			
+			.userMsg span{
+				height:25px;
+				padding:5px;
+				margin:0 5px;
+				border-radius:5px;
+			}
+			
+			.receiver span{
+				background-color:tomato;
+			}
+			
+			.sender span{
+				background-color:lightblue;
+			}
+			
+			.receiver{
+				display:flex;
+				justify-content:flex-end;
+			}
   </style>
 <head>
   <title>Instachat!</title>
@@ -56,13 +92,11 @@ require_once "../controller/global_actions.php";
     <h1><a href="../../index.php">Instachat Room!</a></h1>
 
     <div id="first" class="box">
-      <h2>Received</h2>
       <div></div>
       <form><input autocomplete="off" placeholder="Type here..."></input></form>
     </div>
 
     <div id="second" class="box">
-      <h2>Logs</h2>
       <div></div>
     </div>
 
@@ -72,11 +106,13 @@ require_once "../controller/global_actions.php";
             var div  = $(el_name + ' div');
             var inp  = $(el_name + ' input');
             var form = $(el_name + ' form');
+            var userMsgs = $(el_name + ' div div');
 
             var print = function(m, p) {
                 p = (p === undefined) ? '' : JSON.stringify(p);
-                div.append($("<code>").text(m + ' ' + p));
+                div.append($('<div class="userMsg">').append($('<code class="userTag">').text(m + ' ' + p)));
                 div.scrollTop(div.scrollTop() + 10000);
+                
             };
 
             if (send) {
@@ -90,15 +126,21 @@ require_once "../controller/global_actions.php";
         };
 
       // Stomp.js boilerplate
-      // var client = Stomp.client('ws://' + window.location.hostname + ':15674/ws');
-      var client = Stomp.client('ws://' + window.location.hostname + ':8085/ws');
+       var client = Stomp.client('ws://' + window.location.hostname + ':15674/ws');
+      //var client = Stomp.client('ws://' + window.location.hostname + ':8085/ws');
       client.debug = pipe('#second');
 
-      //var sender = <?php echo '"'.$_GET['user'].'"'; ?>
-      //var receiver = <?php echo '"'.$_GET['friend'].'"'; ?>
+      var sender = <?php echo '"'.$_GET['user'].'"'; ?>;
+      var receiver = <?php echo '"'.$_GET['friend'].'"'; ?>;
 
       var queueSend = <?php echo '"'.$_GET['friend'].$_GET['user'].'";'; ?>
       var queueReceive = <?php echo '"'.$_GET['user'].$_GET['friend'].'";'; ?>
+
+      var printTag= function(tag){
+        console.log(tag);
+        console.log($(".userMsg").last());
+      	
+      };
 
       var print_first = pipe('#first', function(msg) {
 
@@ -116,12 +158,20 @@ require_once "../controller/global_actions.php";
         }
       });
 
-          client.send('/queue/'+queueSend, {"content-type":"text/plain"}, msg);
-          client.send('/queue/'+queueReceive, {"content-type":"text/plain"}, msg);
+          client.send('/queue/'+queueSend, {"content-type":"text/plain", "sender":sender}, msg);
+          client.send('/queue/'+queueReceive, {"content-type":"text/plain", "sender":sender}, msg);
       });
+      
       var on_connect = function(x) {
           id = client.subscribe("/queue/"+queueReceive, function(d) {
-               print_first(d.body);
+              console.log(d.headers.sender+ " "+ sender);
+              print_first(d.body);
+              if (d.headers.sender == sender){
+            	  $("#first .userMsg").last().addClass("sender").prepend($('<span>').text(sender));
+              }
+              else{
+  				$("#first .userMsg").last().addClass("receiver").append($('<span>').text(receiver));
+               }
           }), {"id":"test"};
       };
       var on_error =  function() {

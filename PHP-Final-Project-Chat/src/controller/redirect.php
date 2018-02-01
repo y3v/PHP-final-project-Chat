@@ -1,7 +1,7 @@
 <?php
 session_start();
-// $path = "localhost:82/PHP-Final-Project-Chat";
-$path = 'voyd.sytes.net:8080';
+$path = "localhost:82/PHP-Final-Project-Chat";
+//$path = 'voyd.sytes.net:8080';
 
 if (isset($_SESSION['errorMessages'])){
   unset($_SESSION['errorMessages']);

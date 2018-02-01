@@ -13,8 +13,8 @@ else
 
 //var_dump($_SESSION);
 
-//$path = "localhost:82/PHP-Final-Project-Chat";
-$path = 'voyd.sytes.net:8080';
+$path = "localhost:82/PHP-Final-Project-Chat";
+//$path = 'voyd.sytes.net:8080';
 
 ?>
 
