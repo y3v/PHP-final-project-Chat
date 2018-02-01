@@ -83,27 +83,30 @@
       var client = Stomp.client('ws://' + window.location.hostname + ':8085/ws');
       client.debug = pipe('#second');
 
+      //var sender = <?php echo '"'.$_GET['user'].'"'; ?>
+      //var receiver = <?php echo '"'.$_GET['friend'].'"'; ?>
+
       var queueSend = <?php echo '"'.$_GET['friend'].$_GET['user'].'";'; ?>
       var queueReceive = <?php echo '"'.$_GET['user'].$_GET['friend'].'";'; ?>
 
-      var print_first = pipe('#first', function(data) {
+      var print_first = pipe('#first', function(msg) {
 
       $.ajax({
         type: "POST",
-        url: 'voyd.sytes.net:8080/src/controller/request_handler.php',
+        url: '../controller/request_handler.php',
         data: {
-          'request':'saveMessage'
-          'data':data,
+          'request':'saveMessage',
+          'data':msg,
           'author':<?php echo '"'.$_GET['user'].'"'; ?>,
-          'recipient'<?php echo '"'.$_GET['friend'].'"'; ?>
+          'recipient':<?php echo '"'.$_GET['friend'].'"'; ?>
         },
-        success: function(data){
-          console.log('successfully sent data to script ' + data);
+        success: function(msg){
+          console.log('successfully sent data to script ' + msg);
         }
       });
 
-          client.send('/queue/'+queueSend, {"content-type":"text/plain"}, data);
-          client.send('/queue/'+queueReceive, {"content-type":"text/plain"}, data);
+          client.send('/queue/'+queueSend, {"content-type":"text/plain"}, msg);
+          client.send('/queue/'+queueReceive, {"content-type":"text/plain"}, msg);
       });
       var on_connect = function(x) {
           id = client.subscribe("/queue/"+queueReceive, function(d) {
