@@ -94,6 +94,30 @@ form input[type="submit"]{
 	padding:10px;
 }
 
+#loginh1, #signuph1{
+	font-size:25px;
+	text-align:center;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#newUser{
+	font-family: 'Ubuntu', sans-serif;
+	text-decoration:none;
+	margin-bottom:30px;
+}
+
+.error{
+	font-family: 'Ubuntu', sans-serif;
+	color:red;
+	margin-left:10px;
+}
+
+#top-banner{
+	background-color:#1498d5;
+	height:37px;
+	margin-bottom:10px;
+}
+
 /***************FOOTER STYLES*****************/
 
 /*Site hub styles*/
@@ -109,6 +133,7 @@ footer h3{
 	text-align:center;
 	margin-top:0;
 	margin-bottom:15px;
+	font-family: 'Ubuntu', sans-serif;
 }
 
 footer a{
@@ -156,11 +181,18 @@ footer li{
 
 .social img{
 	display:inline-block;
-	width:75%;
+	width:50px;
+	text-align:center;
 }
 
 .social li{
 	width:25%;
+	display:flex;
+	justify-content:center;
+}
+
+.social li:hover{
+	transform: scale(1.5);
 }
 
 .social h3{
@@ -200,9 +232,6 @@ footer li{
 		margin-top:20px;
 	}
 	
-	.contact-phone{
-		margin-top:50px;
-	}
 	.contact-phone a{
 		display:block;
 	}

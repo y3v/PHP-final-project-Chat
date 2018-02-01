@@ -19,7 +19,7 @@ require_once "src/controller/global_actions.php";
     <link rel="stylesheet" href="src\view\style\style.css">
     <script src="script/script.js" type="text/javascript" charset="utf-8"></script>
     <link rel="canonical" href="">
-
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>

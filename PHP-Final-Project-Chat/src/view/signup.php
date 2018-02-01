@@ -4,8 +4,8 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-//$path = "localhost:82/PHP-Final-Project-Chat";
-$path = 'voyd.sytes.net:8080';
+$path = "localhost:82/PHP-Final-Project-Chat";
+//$path = 'voyd.sytes.net:82';
 
 if (isset($_SESSION['refreshed']) && isset($_SESSION['errorMessages'])){
   unset($_SESSION['errorMessages']);
@@ -30,7 +30,7 @@ else
     <link rel="stylesheet" href="http://<?php echo $GLOBALS['path'];?>/src\view\style\style.css">
     <script src="script/script.js" type="text/javascript" charset="utf-8"></script>
     <link rel="canonical" href="">
-
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -45,10 +45,10 @@ else
       getSiteMenu();?>
     </header>
     <main>
-      <h1 style="text-align:center">Register Now!</h1>
+      <h1 id="signuph1" style="text-align:center">Register Now!</h1>
       <!-- <form action="http://localhost:82/PHP-Final-Project-Chat/src/controller/signup.php" method="POST"> -->
       <form action="http://<?php echo $path; ?>/src/controller/signup.php" method="POST">
-        <label>Username:</label><input type="text" id="" name="uname" value="">
+        <label>Username:</label><input type="text" id="" name="uname" value="<?php if(isset($_SESSION['stickies']['uname'])){ echo $_SESSION['stickies']['uname']; }?>">
           <?php
           if(isset($_SESSION['errorMessages']['uname'])) {
             getError($_SESSION['errorMessages']['uname']);
@@ -58,31 +58,31 @@ else
           }
           ?>
         <br>
-        <label>Password:</label><input type="password" id="" name="pword" value="">
+        <label>Password:</label><input type="password" id="" name="pword">
           <?php
           if(isset($_SESSION['errorMessages']['pword'])) {
             getError($_SESSION['errorMessages']['pword']);
           }?>
         <br>
-        <label>Confirm Password:</label><input type="password" id="" name="pword2" value="">
+        <label>Confirm Password:</label><input type="password" id="" name="pword2">
           <?php
           if(isset($_SESSION['errorMessages']['pword2'])) {
             getError($_SESSION['errorMessages']['pword2']);
           }?>
         <br>
-        <label>First Name:</label><input type="text" id="" name="fname" value="">
+        <label>First Name:</label><input type="text" id="" name="fname" value="<?php if(isset($_SESSION['stickies']['fname'])){ echo $_SESSION['stickies']['fname']; }?>">
           <?php
           if(isset($_SESSION['errorMessages']['fname'])) {
             getError($_SESSION['errorMessages']['fname']);
           }?>
         <br>
-        <label>Last Name:</label><input type="text" id="" name="lname" value="">
+        <label>Last Name:</label><input type="text" id="" name="lname" value="<?php if(isset($_SESSION['stickies']['lname'])){ echo $_SESSION['stickies']['lname']; }?>">
           <?php
           if(isset($_SESSION['errorMessages']['lname'])) {
             getError($_SESSION['errorMessages']['lname']);
           }?>
         <br>
-        <label>E-mail:</label><input type="email" id="" name="email" value="">
+        <label>E-mail:</label><input type="email" id="" name="email" value="<?php if(isset($_SESSION['stickies']['email'])){ echo $_SESSION['stickies']['email']; }?>">
           <?php
           if(isset($_SESSION['errorMessages']['email'])) {
             getError($_SESSION['errorMessages']['email']);
@@ -100,9 +100,7 @@ else
         <br>
       </form>
     </main>
-    <footer>
 		<?php getFooter();?>
-    </footer>
   </body>
 </html>
 

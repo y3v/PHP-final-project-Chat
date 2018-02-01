@@ -6,6 +6,7 @@ require_once "../controller/global_actions.php";
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
   <script src="script\stomp.js"></script>
   <link rel="stylesheet" href="http://<?php echo $GLOBALS['path'];?>/\src\view\style\style.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <style>
       .box {
 			width: 540px;
@@ -25,23 +26,24 @@ require_once "../controller/global_actions.php";
 			code{
 			padding:3px;
 			font-family:"Arial";
+			max-width:430px;
 			}
 			
 			.box>div {
-			border: 2px solid #1498d5;
+			border: 2px solid #11aaff;
 			height: 300px;
 			overflow: auto;
 			}
 			
-			div code {
+			div p {
 			display: inline-block;
 			}
 			
-			#first div code {
+			#first div p {
 			-moz-border-radius: 2px;
 			border-radius: 2px;
-			border: 1px solid #eee;
-			margin-bottom: 5px;
+			border: 4px solid white;
+			font-family: 'Ubuntu', sans-serif;
 			}
 			
 			#second div {
@@ -60,10 +62,10 @@ require_once "../controller/global_actions.php";
 			}
 			
 			.userMsg span{
-				height:25px;
-				padding:5px;
+				padding:10px;
 				margin:0 5px;
 				border-radius:5px;
+				font-family: 'Ubuntu', sans-serif;
 			}
 			
 			.receiver span{
@@ -77,6 +79,10 @@ require_once "../controller/global_actions.php";
 			.receiver{
 				display:flex;
 				justify-content:flex-end;
+				align-items:center;
+			}
+			.userInput{
+			 margin-left:0;
 			}
   </style>
 <head>
@@ -93,7 +99,7 @@ require_once "../controller/global_actions.php";
 
     <div id="first" class="box">
       <div></div>
-      <form><input autocomplete="off" placeholder="Type here..."></input></form>
+      <form class="userInput"><input autocomplete="off" placeholder="Type here..."></input></form>
     </div>
 
     <div id="second" class="box">
@@ -110,7 +116,7 @@ require_once "../controller/global_actions.php";
 
             var print = function(m, p) {
                 p = (p === undefined) ? '' : JSON.stringify(p);
-                div.append($('<div class="userMsg">').append($('<code class="userTag">').text(m + ' ' + p)));
+                div.append($('<div class="userMsg">').append($('<p class="userTag">').text(m + ' ' + p)));
                 div.scrollTop(div.scrollTop() + 10000);
                 
             };

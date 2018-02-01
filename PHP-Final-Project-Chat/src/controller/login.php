@@ -6,7 +6,11 @@ session_unset();
 $path = "localhost:82/PHP-Final-Project-Chat";
 //$path = 'voyd.sytes.net:8080';
 
+if (isset($_SESSION['stickies']['uname']))
+    unset($_SESSION['stickies']['uname']);
+
 $errorMessages = [];
+$stickies = $_POST;
 
 if (isset($_POST['login'])){
 
@@ -42,6 +46,7 @@ if (isset($_POST['login'])){
     else{
       $GLOBALS['errorMessages']['loginError'] = 'Invalid username or password match';
       $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
+      $_SESSION['stickies'] = $GLOBALS['stickies'];
       //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
       //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
       header('location: http://'. $path .'/src/view/login.php');
@@ -49,6 +54,7 @@ if (isset($_POST['login'])){
   }
   else {
     $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
+    $_SESSION['stickies'] = $GLOBALS['stickies'];
     //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
     //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
     header('location: http://'. $path .'/src/view/login.php');
@@ -75,6 +81,7 @@ else if (isset($_GET['userId'])){
   else {
     $GLOBALS['errorMessages']['loginError'] = 'There was an error logging you in. Please try again later.';
     $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
+    $_SESSION['stickies'] = $GLOBALS['stickies'];
     //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
     //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/login.php');
     header('location: http://'. $path .'/src/view/login.php');
