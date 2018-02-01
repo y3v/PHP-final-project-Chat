@@ -2,7 +2,8 @@
 session_start();
 require_once "global_actions.php";
 require_once "user_service.php";
-$path = "localhost:82/PHP-Final-Project-Chat";
+//$path = "localhost:82/PHP-Final-Project-Chat";
+$path = 'voyd.sytes.net:8080';
 
 
 if (isset($_SESSION['username']) && isset($_SESSION['userId'])){

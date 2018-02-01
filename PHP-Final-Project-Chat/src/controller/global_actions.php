@@ -2,7 +2,8 @@
 session_start();
 $siteMenu = ['homepage','signup','login'];
 $errorMessages = [];
-$path = "localhost:82/PHP-Final-Project-Chat";
+// $path = "localhost:82/PHP-Final-Project-Chat";
+$path = 'voyd.sytes.net:8080';
 
 function getSiteMenu(){
   echo '<ul class="header-menu">';

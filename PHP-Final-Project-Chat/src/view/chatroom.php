@@ -39,15 +39,15 @@
           font-size: 0.8em;
       }
   </style>
-  <title>RabbitMQ Web STOMP Examples : Echo Server</title>
+  <title>Instachat!</title>
   <link href="main.css" rel="stylesheet" type="text/css"/>
 </head><body lang="en">
-    <h1><a href="index.html">RabbitMQ Web STOMP Examples</a> > Echo Server</h1>
+    <h1><a href="../../index.php">Instachat Room!</a></h1>
 
     <div id="first" class="box">
       <h2>Received</h2>
       <div></div>
-      <form><input autocomplete="off" value="Type here..."></input></form>
+      <form><input autocomplete="off" placeholder="Type here..."></input></form>
     </div>
 
     <div id="second" class="box">
@@ -79,13 +79,29 @@
         };
 
       // Stomp.js boilerplate
-      var client = Stomp.client('ws://' + window.location.hostname + ':15674/ws');
+      // var client = Stomp.client('ws://' + window.location.hostname + ':15674/ws');
+      var client = Stomp.client('ws://' + window.location.hostname + ':8085/ws');
       client.debug = pipe('#second');
 
       var queueSend = <?php echo '"'.$_GET['friend'].$_GET['user'].'";'; ?>
       var queueReceive = <?php echo '"'.$_GET['user'].$_GET['friend'].'";'; ?>
 
       var print_first = pipe('#first', function(data) {
+
+      $.ajax({
+        type: "POST",
+        url: 'voyd.sytes.net:8080/src/controller/request_handler.php',
+        data: {
+          'request':'saveMessage'
+          'data':data,
+          'author':<?php echo '"'.$_GET['user'].'"'; ?>,
+          'recipient'<?php echo '"'.$_GET['friend'].'"'; ?>
+        },
+        success: function(data){
+          console.log('successfully sent data to script ' + data);
+        }
+      });
+
           client.send('/queue/'+queueSend, {"content-type":"text/plain"}, data);
           client.send('/queue/'+queueReceive, {"content-type":"text/plain"}, data);
       });
@@ -97,7 +113,9 @@
       var on_error =  function() {
         console.log('error');
       };
-      client.connect('guest', 'guest', on_connect, on_error, '/');
+
+      //client.connect('guest', 'guest', on_connect, on_error, '/');
+      client.connect('yevoli', 'yevoli', on_connect, on_error, '/');
 
       $('#first input').focus(function() {
           if (!has_had_focus) {
