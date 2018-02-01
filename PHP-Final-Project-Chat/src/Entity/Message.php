@@ -16,59 +16,59 @@ class Message{
      * @ORM\Column(type="integer")
      */
     private $id;
-    
+
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
-    private $authorId;
-    
+    private $authorUname;
+
      /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
-    private $recipientId;
-    
+    private $recipientUname;
+
      /**
      * @ORM\Column(type="datetime")
      */
     private $timestamp;
-    
+
     /**
      * @ORM\Column(type="string")
      */
     private $message;
-    
+
      /**
      * @ORM\Column(type="boolean")
      */
     private $isDeleted;
-    
+
      /**
      * @ORM\Column(type="boolean")
      */
     private $wasViewed;
-  
-    public function __construct($authorId,$recipientId,$timestamp,$message,$isDeleted,$wasViewed){
-        $this->authorId=$authorId;
-        $this->recipientId=$recipientId;
+
+    public function __construct($authorUname,$recipientUname,$timestamp,$message,$isDeleted,$wasViewed){
+        $this->authorUname=$authorUname;
+        $this->recipientUname=$recipientUname;
         $this->timestamp=$timestamp;
         $this->message=$message;
         $this->isDeleted=$isDeleted;
         $this->wasViewed=$wasViewed;
     }
-    
+
     public function getId()
     {
         return $this->id;
     }
-    
-    public function getAuthorId()
+
+    public function getauthorUname()
     {
-        return $this->authorId;
+        return $this->authorUname;
     }
 
-    public function getRecipientId()
+    public function getrecipientUname()
     {
-        return $this->recipientId;
+        return $this->recipientUname;
     }
 
     public function getTimestamp()
@@ -95,15 +95,15 @@ class Message{
     {
         $this->id = $id;
     }
-    
-    public function setAuthorId($authorId)
+
+    public function setauthorUname($authorUname)
     {
-        $this->authorId = $authorId;
+        $this->authorUname = $authorUname;
     }
 
-    public function setRecipientId($recipientId)
+    public function setrecipientUname($recipientUname)
     {
-        $this->recipientId = $recipientId;
+        $this->recipientUname = $recipientUname;
     }
 
     public function setTimestamp($timestamp)
@@ -126,5 +126,5 @@ class Message{
         $this->wasViewed = $wasViewed;
     }
 
-    
+
 }

@@ -1,6 +1,8 @@
 <?php
 require_once "../controller/global_actions.php";
-$path = "localhost:82/PHP-Final-Project-Chat";
+//$path = "localhost:82/PHP-Final-Project-Chat";
+$path = 'voyd.sytes.net:8080';
+
 ?>
 
 
