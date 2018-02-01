@@ -28,7 +28,7 @@ class Message{
     private $recipientUname;
 
      /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string")
      */
     private $timestamp;
 

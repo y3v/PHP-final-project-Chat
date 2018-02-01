@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once "../controller/global_actions.php";
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ require_once "../controller/global_actions.php";
   <link href="main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body lang="en">
-    <?php 
+    <?php
       getWebsiteBanner();
       //getWelcome();
       getSiteMenu();

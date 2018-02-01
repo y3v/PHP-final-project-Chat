@@ -7,7 +7,7 @@ $userRepo = $entityManager->getRepository(Message::class);
 function createMessage($authorUname, $recipientUname, $message, $isDeleted = false, $wasViewed = false){
   global $messageEntityManager;
 
-  $timestamp = date("Y-m-d");
+  $timestamp = date("Y-m-d H:i:s");
 
   $newMessage = new Message($authorUname, $recipientUname, $timestamp, $message, $isDeleted, $wasViewed);
   $ret = $messageEntityManager->persist($newMessage);
