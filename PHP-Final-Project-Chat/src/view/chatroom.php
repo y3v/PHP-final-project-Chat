@@ -49,7 +49,7 @@ require_once "../controller/global_actions.php";
 			
 			#second div {
 			font-size: 0.8em;
-			/* display:none; */
+			display:none;
 			}
 			h1{
 			text-align:center;

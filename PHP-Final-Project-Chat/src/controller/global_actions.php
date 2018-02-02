@@ -82,5 +82,29 @@ function getFooter(){
 }
 
 function getSlideShow(){
-    echo '<img class="slide-box" src="http://'. $GLOBALS["path"] .'/src/view/images/slide1.png" alt="Slide1"/>';
+    echo '
+    <div class="slide-box">
+
+    <div class="mySlides fade">
+      <img src="http://'. $GLOBALS["path"] .'/src/view/images/slide1.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="http://'. $GLOBALS["path"] .'/src/view/images/slide2.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="http://'. $GLOBALS["path"] .'/src/view/images/slide3.png" style="width:100%">
+    </div>
+    
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+    </div>
+
+';
 }
