@@ -1,5 +1,6 @@
 <?php
 require_once "../controller/global_actions.php";
+require_once "../controller/message_service.php";
 ?>
 <!DOCTYPE html>
 <html><head>
@@ -115,6 +116,9 @@ require_once "../controller/global_actions.php";
     </div>
 
     <script>
+    var lastMessages = <?php $messages = readLastMessages($_GET['user'], $_GET['friend']);
+    echo $messages; ?>;
+    console.log(lastMessages);
         var has_had_focus = false;
         var pipe = function(el_name, send) {
             var div  = $(el_name + ' div');
@@ -122,6 +126,7 @@ require_once "../controller/global_actions.php";
             var form = $(el_name + ' form');
             var userMsgs = $(el_name + ' div div');
 
+            // MAYBE foreach ret values for last messages in print and BOOM
             var print = function(m, p) {
                 p = (p === undefined) ? '' : JSON.stringify(p);
                 div.append($('<div class="userMsg">').append($('<p class="userTag">').text(m + ' ' + p)));

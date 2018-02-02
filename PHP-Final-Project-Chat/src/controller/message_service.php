@@ -18,18 +18,36 @@ function createMessage($authorUname, $recipientUname, $message, $isDeleted = fal
 
 /***** READ USER *****/
 function readLastMessages($authorUname, $recipientUname, $number = 15){
-  global $messageEntityManager;
+  $servername = "voyd.sytes.net";
+  $username = "yevoli";
+  $password = "yevoli123";
+  $dbname = "php_project_chat";
+  // Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
 
-  $rsm = new ResultSetMapping;
-  $rsm->addEntityResult('User', 'u');
-  $rsm->addFieldResult('u', 'id', 'id');
-  $rsm->addFieldResult('u', 'name', 'name');
-  
-  $query = $messageEntityManager->createNativeQuery("SELECT * FROM message WHERE (authorUname ='" . $authorUname . "'  AND recipientUname ='" . $recipientUname . "') OR (authorUname = '" . $recipientUname . "' AND recipientUname = '" . $authorUname . "') ORDER BY timeStamp DESC ");
-  $result = $query->getResult();
-  $return = array_slice($result,0,$number);
+  $sql = "SELECT * FROM message WHERE (authorUname ='" . $authorUname . "'  AND recipientUname ='" . $recipientUname . "') OR (authorUname = '" . $recipientUname . "' AND recipientUname = '" . $authorUname . "') ORDER BY timeStamp DESC ";
+  $result = $conn->query($sql);
+  $messages = array();
+  $count = 0;
 
-  return $result;
+  if ($result->num_rows > 0) {
+      // output data of each row
+      $outp = $result->fetch_all(MYSQLI_ASSOC);
+      /*while($row = $result->fetch_assoc() && $count < $number) {
+        $message = $row;
+        array_push($messages,$message);
+        $count++;
+      }*/
+  } else {
+      echo "0 results";
+  }
+  $conn->close();
+
+  return json_encode($outp);
 }
 /***** UPDATE USER *****/
 /***** DELETE USER *****/
