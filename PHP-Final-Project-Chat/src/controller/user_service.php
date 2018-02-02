@@ -63,6 +63,7 @@ function getUserByEmail($email, $all = false){
 function getUserByLogin($uname, $pass){
   global $userRepo;
 
+  
   $userByLogin = $userRepo->findBy(['username' => $uname, 'password' => $pass]);
   printf($userByLogin);
   if (!empty($userByLogin))
