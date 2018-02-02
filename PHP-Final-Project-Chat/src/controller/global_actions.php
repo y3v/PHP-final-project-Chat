@@ -10,12 +10,12 @@ $errorMessages = [];
 function getSiteMenu(){
   echo '<ul class="header-menu">';
   for ($i=0; $i < sizeof($GLOBALS['siteMenu']); $i++) {
-    if ($GLOBALS['siteMenu'][$i] == 'login' && isset($_SESSION['username']) && isset($_SESSION['userId'])){
+    if ($GLOBALS['siteMenu'][$i] == 'Login' && isset($_SESSION['username']) && isset($_SESSION['userId'])){
       //echo '<li><a href="http://localhost:82/PHP-Final-Project-Chat/src/controller/logout.php">Logout</a></li>';
       echo '<li><a href=http://'. $GLOBALS["path"] .'/src/controller/logout.php>Logout</a></li>';
       //echo '<li><a href="http://localhost/PHP-Final-Project-Chat/src/controller/logout.php">Logout</a></li>';
     }
-    else if ($GLOBALS['siteMenu'][$i] == 'signup' && isset($_SESSION['username']) && isset($_SESSION['userId']) ){
+    else if ($GLOBALS['siteMenu'][$i] == 'Signup' && isset($_SESSION['username']) && isset($_SESSION['userId']) ){
     }
     else
       //echo '<li><a href="http://localhost:82/PHP-Final-Project-Chat/src/controller/redirect.php?page=' . $GLOBALS['siteMenu'][$i] . '">' . $GLOBALS['siteMenu'][$i] . '</a></li>';
@@ -40,7 +40,8 @@ function getError($message){
 function getWebsiteBanner(){
     echo
 
-    '<div id="logo-box">
+    '<div id="top-banner"></div>
+    <div id="logo-box">
         <a class="" id="logo" href="http://'. $GLOBALS["path"] .'/index.php"><img src="http://'. $GLOBALS["path"] .'/src/view/images/logo.png" alt="Image of InstaChat Logo"></a>
     </div>';
 
@@ -66,10 +67,10 @@ function getFooter(){
 					<h3>SOCIAL HUB</h3>
 					<div class="row">
 						<ul class="col-m-8 row">
-							<li class="col-m-3 col-6"><a href="https://www.facebook.com"><img src="images/social/facebook.png" alt="Link to the ePass Facebook page. Like Us on Facebook!" title="Like us on Facebook!"/></a></li>
-							<li class="col-m-3 col-6"><a href="https://www.twitter.com"><img src="images/social/twitter.png" alt="Link to the ePass Twitter feed. Follow us on Twitter!" title="Follow us on Twitter!"/></a> </li>
-							<li class="col-m-3 col-6"><a href="https://www.youtube.com"><img src="images/social/youtube.png" alt="Link to the ePass YouTube page. Subscribe to us on YouTube!" title="Subscribe to us on YouTube!"/></a></li>
-							<li class="col-m-3 col-6"><a href="https://plus.google.com"><img src="images/social/google-plus.png" alt="Link to the ePass Google+ page." title="Like us on Google+"/></a></li>
+							<li class="col-m-3 col-6"><a href="https://www.facebook.com"><img src="http://'. $GLOBALS["path"] .'/src/view/images/facebook.png" alt="Link to the ePass Facebook page. Like Us on Facebook!" title="Like us on Facebook!"/></a></li>
+							<li class="col-m-3 col-6"><a href="https://www.twitter.com"><img src="http://'. $GLOBALS["path"] .'/src/view/images/twitter.png" alt="Link to the ePass Twitter feed. Follow us on Twitter!" title="Follow us on Twitter!"/></a> </li>
+							<li class="col-m-3 col-6"><a href="https://www.youtube.com"><img src="http://'. $GLOBALS["path"] .'/src/view/images/youtube.png" alt="Link to the ePass YouTube page. Subscribe to us on YouTube!" title="Subscribe to us on YouTube!"/></a></li>
+							<li class="col-m-3 col-6"><a href="https://plus.google.com"><img src="http://'. $GLOBALS["path"] .'/src/view/images/google-plus.png" alt="Link to the ePass Google+ page." title="Like us on Google+"/></a></li>
 						</ul>
 					</div>
 				</div>
@@ -81,5 +82,29 @@ function getFooter(){
 }
 
 function getSlideShow(){
-    echo '<img class="slide-box" src="http://'. $GLOBALS["path"] .'/src/view/images/slide1.png" alt="Slide1"/>';
+    echo '
+    <div class="slide-box">
+
+    <div class="mySlides fade">
+      <img src="http://'. $GLOBALS["path"] .'/src/view/images/slide1.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="http://'. $GLOBALS["path"] .'/src/view/images/slide2.png" style="width:100%">
+    </div>
+    
+    <div class="mySlides fade">
+      <img src="http://'. $GLOBALS["path"] .'/src/view/images/slide3.png" style="width:100%">
+    </div>
+    
+    </div>
+    <br>
+    
+    <div style="text-align:center">
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+      <span class="dot"></span> 
+    </div>
+
+';
 }

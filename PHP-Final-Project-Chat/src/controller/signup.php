@@ -11,49 +11,54 @@ $path = "localhost:82/PHP-Final-Project-Chat";
 //$path = 'voyd.sytes.net:8080';
 
 $userRepo = $entityManager->getRepository(User::class);
-$validation = true;
+$validation = 0;
 $dbValidation = true;
 $errorMessages = [];
 
 if (isset($_SESSION['errorMessages']))
   unset($_SESSION['errorMessages']);
 
+if (isset($_SESSION['stickies']))
+    unset($_SESSION['stickies']);
+    
+$stickies = $_POST;
+    
 
 if (empty(trim($_POST['email']))){
-  $validation = false;
+  $validation++;
   $GLOBALS['errorMessages']['email'] = 'Invalid email address.';
 }
 
 if (empty(trim($_POST['uname']))){
-  $validation = false;
+  $validation++;
   $GLOBALS['errorMessages']['uname'] = 'Invalid username.';
 }
 
 if (empty(trim($_POST['fname']))){
-  $validation = false;
+  $validation++;
   $GLOBALS['errorMessages']['fname'] = 'Enter your first name.';
 }
 
 if (empty(trim($_POST['lname']))){
-  $validation = false;
+    $validation++;
   $GLOBALS['errorMessages']['lname'] = 'Enter your last name.';
 }
 
 if (empty(trim($_POST['pword']))){
-  $validation = false;
+  $validation++;
   $GLOBALS['errorMessages']['pword'] = 'Invalid password.';
 }
-else if (empty(trim($_POST['pword2']))){
-  $validation = false;
+if (empty(trim($_POST['pword2']))){
+  $validation++;
   $GLOBALS['errorMessages']['pword2'] = 'Confirm your password.';
 }
-else if(trim($_POST['pword']) != trim($_POST['pword2'])){
-  $validation = false;
-  $GLOBALS['errorMessages']['pword2'] = 'Passwords does not match.';
+if(trim($_POST['pword']) != trim($_POST['pword2'])){
+  $validation++;
+  $GLOBALS['errorMessages']['pword2'] = 'Passwords do not match.';
 }
 
 // If fields validation successful
-if ($validation){
+if ($validation > 0){
   $usersByUsername = getUserByUsername($_POST['uname'], true);
   $usersByEmail = getUserByEmail($_POST['email'], true);
   if(!empty($usersByUsername)){
@@ -67,6 +72,7 @@ if ($validation){
 }
 else {
   $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
+  $_SESSION['stickies'] = $GLOBALS['stickies'];
   //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/signup.php');
   header('location: http://'. $path .'/src/view/signup.php');
   //header('location: http://localhost:8000/src/view/signup.php');
@@ -82,6 +88,7 @@ if($dbValidation){
   else{
     $GLOBALS['errorMessages']['dbError'] = 'There was an error processing this request. Try again later.';
     $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
+    $_SESSION['stickies'] = $GLOBALS['stickies'];
     //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/signup.php');
     //header('location: http://localhost:8000/src/view/signup.php');
     header('location: http://'. $path .'/src/view/signup.php');
@@ -89,6 +96,7 @@ if($dbValidation){
 }
 else{
   $_SESSION['errorMessages'] = $GLOBALS['errorMessages'];
+  $_SESSION['stickies'] = $GLOBALS['stickies'];
   //header('location: http://localhost:82/PHP-Final-Project-Chat/src/view/signup.php');
   header('location: http://'. $path .'/src/view/signup.php');
   //header('location: http://localhost:8000/src/view/signup.php');

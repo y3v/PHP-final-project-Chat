@@ -8,9 +8,9 @@ require_once "src/controller/global_actions.php";
 <!DOCTYPE html>
 <html>
   <head lang="en">
-    <title>first-mockup</title>
+    <title>InstaChat!</title>
     <meta charset="utf-8">
-    <meta name="author" content="Olivier Lepage">
+    <meta name="author" content="Olivier Lepage & Yev Kantorovich">
     <meta name="description" content="description of this pages content">
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- for responsive websites -->
 
@@ -19,7 +19,7 @@ require_once "src/controller/global_actions.php";
     <link rel="stylesheet" href="src\view\style\style.css">
     <script src="script/script.js" type="text/javascript" charset="utf-8"></script>
     <link rel="canonical" href="">
-
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
     <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -72,4 +72,25 @@ require_once "src/controller/global_actions.php";
 		<?php getFooter()?>
     </footer>
   </body>
+  <script>
+        var slideIndex = 0;
+        showSlides();
+        
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+               slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 8000); // Change image every 8 seconds
+        }
+	</script>
 </html>
