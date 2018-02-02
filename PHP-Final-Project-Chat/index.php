@@ -50,16 +50,19 @@ require_once "src/controller/global_actions.php";
     	    $allUsers = $userRepo->findAll();
 
     	    foreach ($allUsers as $user) {
-    	      echo "<div class='userChatList'><a href='
-            http://". $path ."/src/controller/redirect.php?page=chatroom&user=". $_SESSION['username'] ."&friend=" . $user->getUsername() . "
-            '>" . $user->getUsername() . "  (" . $user->getFirstname() . " " .  $user->getLastname() .
-            ")<span class='status'>";
-    	        if ($user->getIsLoggedOn()) {
-    	            echo "<img src='http://". $GLOBALS['path'] ."/src/view/images/online.png' alt='http://". $GLOBALS['path'] ."/src/view/images/online.png'/>";
-    	        }else{
-    	            echo "<img src='http://". $GLOBALS['path'] ."/src/view/images/offline.png' alt='http://". $GLOBALS['path'] ."/src/view/images/online.png'/>";
-    	        }
-    	        echo "</span></a></div>";
+            if ($user->getUsername() != $_SESSION['username']){
+              echo "<div class='userChatList'><a href='
+              http://". $path ."/src/controller/redirect.php?page=chatroom&user=". $_SESSION['username'] ."&friend=" . $user->getUsername() . "
+              '>" . $user->getUsername() . "  (" . $user->getFirstname() . " " .  $user->getLastname() .
+              ")<span class='status'>";
+              if ($user->getIsLoggedOn()) {
+                echo "<img src='http://". $GLOBALS['path'] ."/src/view/images/online.png' alt='http://". $GLOBALS['path'] ."/src/view/images/online.png'/>";
+              }else{
+                echo "<img src='http://". $GLOBALS['path'] ."/src/view/images/offline.png' alt='http://". $GLOBALS['path'] ."/src/view/images/online.png'/>";
+              }
+              echo "</span></a></div>";
+
+            }
     	    }
     	}
     	else{
@@ -75,20 +78,20 @@ require_once "src/controller/global_actions.php";
   <script>
         var slideIndex = 0;
         showSlides();
-        
+
         function showSlides() {
             var i;
             var slides = document.getElementsByClassName("mySlides");
             var dots = document.getElementsByClassName("dot");
             for (i = 0; i < slides.length; i++) {
-               slides[i].style.display = "none";  
+               slides[i].style.display = "none";
             }
             slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
+            if (slideIndex > slides.length) {slideIndex = 1}
             for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
-            slides[slideIndex-1].style.display = "block";  
+            slides[slideIndex-1].style.display = "block";
             dots[slideIndex-1].className += " active";
             setTimeout(showSlides, 8000); // Change image every 8 seconds
         }

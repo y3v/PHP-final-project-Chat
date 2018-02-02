@@ -141,7 +141,12 @@ require_once "../controller/message_service.php";
 
     };
     var lastMessages = <?php $messages = readLastMessages($_GET['user'], $_GET['friend']);
-    echo $messages; ?>;
+    if (strpos($messages, '0') < 0 ){
+      echo $messages;
+    }
+    else
+      echo 'none'
+      ?>;
     console.log(lastMessages);
         var has_had_focus = false;
         var pipe = function(el_name, send) {
