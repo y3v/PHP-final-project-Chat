@@ -27,7 +27,7 @@ require_once "../controller/global_actions.php";
 			code{
 			padding:3px;
 			font-family:"Arial";
-			max-width:430px;
+			max-width:380px;
 			}
 			
 			.box>div {
@@ -45,6 +45,8 @@ require_once "../controller/global_actions.php";
 			border-radius: 2px;
 			border: 4px solid white;
 			font-family: 'Ubuntu', sans-serif;
+			word-break: break-all;
+			max-width:400px;
 			}
 			
 			#second div {
@@ -73,6 +75,10 @@ require_once "../controller/global_actions.php";
 				background-color:tomato;
 			}
 			
+			.receiver p{
+			 border: 4px solid #eee !important;
+			}
+			
 			.sender span{
 				background-color:lightblue;
 			}
@@ -81,6 +87,7 @@ require_once "../controller/global_actions.php";
 				display:flex;
 				justify-content:flex-end;
 				align-items:center;
+				background-color:#eee;
 			}
 			.userInput{
 			 margin-left:0;
