@@ -118,7 +118,13 @@ require_once "../controller/message_service.php";
     <script>
     function print_start() {
       var div  = $('#first' + ' div');
-      for (var i = 5; i > 0; i-- ){
+      var number = lastMessages.length;
+      if (number >= 5)
+        number = 5;
+      else
+        number = lastMessages.length -1;
+
+      for (var i = number; i >= 0; i-- ){
         var lastMessage = lastMessages[i];
 
           //p = (p === undefined) ? '' : JSON.stringify(p);
