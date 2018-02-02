@@ -3,8 +3,8 @@ require_once "global_actions.php";
 require_once "user_service.php";
 session_start();
 session_unset();
-$path = "localhost:82/PHP-Final-Project-Chat";
-//$path = 'voyd.sytes.net:8080';
+//$path = "localhost:82/PHP-Final-Project-Chat";
+$path = 'voyd.sytes.net:8080';
 
 if (isset($_SESSION['stickies']['uname']))
     unset($_SESSION['stickies']['uname']);

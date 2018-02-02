@@ -15,13 +15,13 @@ $proxyDir = null;
 $cache = null;
 $useSimpleAnnotationReader = false;
 
-// Connexion à la base de données
+// Connexion ï¿½ la base de donnï¿½es
 $dbParams = [
  'driver'   => 'pdo_mysql',
  'host'     => 'localhost',
  'charset'  => 'utf8',
- 'user'     => 'root',
- 'password' => 'root',
+ 'user'     => 'yevoli',
+ 'password' => 'yevoli',
  'dbname'   => 'php_project',
  ];
 

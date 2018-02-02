@@ -4,7 +4,7 @@ if(!isset($_SESSION)){
     session_start();
 }
 
-$path = "localhost:82/PHP-Final-Project-Chat";
+//$path = "localhost:82/PHP-Final-Project-Chat";
 //$path = 'voyd.sytes.net:82';
 
 if (isset($_SESSION['refreshed']) && isset($_SESSION['errorMessages'])){

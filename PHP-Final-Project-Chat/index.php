@@ -44,8 +44,8 @@ require_once "src/controller/global_actions.php";
 
     	if (isset($_SESSION['username'])){
     	    echo "<h3 id='whoChat'>Who would you like to Chat with?</h3>";
-            //$path = "localhost:82/PHP-final-project-Chat";
-            $path = "localhost:82/PHP-Final-Project-Chat";
+            ////$path = "localhost:82/PHP-Final-Project-Chat";
+            //$path = "localhost:82/PHP-Final-Project-Chat";
 
     	    $allUsers = $userRepo->findAll();
 

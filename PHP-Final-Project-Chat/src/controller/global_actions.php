@@ -4,8 +4,8 @@ if(!isset($_SESSION)){
 }
 $siteMenu = ['Homepage','Signup','Login'];
 $errorMessages = [];
- $path = "localhost:82/PHP-Final-Project-Chat";
-//$path = 'voyd.sytes.net:8080';
+ //$path = "localhost:82/PHP-Final-Project-Chat";
+$path = 'voyd.sytes.net:8080';
 
 function getSiteMenu(){
   echo '<ul class="header-menu">';
@@ -88,22 +88,22 @@ function getSlideShow(){
     <div class="mySlides fade">
       <img src="http://'. $GLOBALS["path"] .'/src/view/images/slide1.png" style="width:100%">
     </div>
-    
+
     <div class="mySlides fade">
       <img src="http://'. $GLOBALS["path"] .'/src/view/images/slide2.png" style="width:100%">
     </div>
-    
+
     <div class="mySlides fade">
       <img src="http://'. $GLOBALS["path"] .'/src/view/images/slide3.png" style="width:100%">
     </div>
-    
+
     </div>
     <br>
-    
+
     <div style="text-align:center">
-      <span class="dot"></span> 
-      <span class="dot"></span> 
-      <span class="dot"></span> 
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
     </div>
 
 ';

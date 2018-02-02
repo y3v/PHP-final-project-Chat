@@ -15,15 +15,15 @@ $proxyDir = null;
 $cache = null;
 $useSimpleAnnotationReader = false;
 
-// Connexion à la base de données
+// Connexion ï¿½ la base de donnï¿½es
 $dbParams = [
  'driver'   => 'pdo_mysql',
- 'host'     => 'localhost',
+ 'host'     => 'voyd.sytes.net',
  'charset'  => 'utf8',
- 'user'     => 'root',
- 'password' => 'root',
+ 'user'     => 'yevoli',
+ 'password' => 'yevoli123',
  'dbname'   => 'php_project_chat',
- ];
+];
 
 // $dbParams = [
 //     'driver'   => 'pdo_mysql',

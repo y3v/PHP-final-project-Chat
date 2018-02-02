@@ -13,7 +13,7 @@ require_once "../controller/global_actions.php";
 			width: 540px;
 			margin: auto;
 			}
-			
+
 			.box div, .box input {
 			border: 2px solid #1498d5;
 			-moz-border-radius: 4px;
@@ -23,23 +23,23 @@ require_once "../controller/global_actions.php";
 			margin: 3px 0 10px 0;
 			margin-left:0;
 			}
-			
+
 			code{
 			padding:3px;
 			font-family:"Arial";
 			max-width:380px;
 			}
-			
+
 			.box>div {
 			border: 2px solid #11aaff;
 			height: 300px;
 			overflow: auto;
 			}
-			
+
 			div p {
 			display: inline-block;
 			}
-			
+
 			#first div p {
 			-moz-border-radius: 2px;
 			border-radius: 2px;
@@ -48,7 +48,7 @@ require_once "../controller/global_actions.php";
 			word-break: break-all;
 			max-width:400px;
 			}
-			
+
 			#second div {
 			font-size: 0.8em;
 			display:none;
@@ -59,30 +59,30 @@ require_once "../controller/global_actions.php";
 			h1 a{
 			text-decoration:none;
 			}
-			
+
 			.userMsg{
 			    height:initial;
 			}
-			
+
 			.userMsg span{
 				padding:10px;
 				margin:0 5px;
 				border-radius:5px;
 				font-family: 'Ubuntu', sans-serif;
 			}
-			
+
 			.receiver span{
 				background-color:tomato;
 			}
-			
+
 			.receiver p{
 			 border: 4px solid #eee !important;
 			}
-			
+
 			.sender span{
 				background-color:lightblue;
 			}
-			
+
 			.receiver{
 				display:flex;
 				justify-content:flex-end;
@@ -126,7 +126,7 @@ require_once "../controller/global_actions.php";
                 p = (p === undefined) ? '' : JSON.stringify(p);
                 div.append($('<div class="userMsg">').append($('<p class="userTag">').text(m + ' ' + p)));
                 div.scrollTop(div.scrollTop() + 10000);
-                
+
             };
 
             if (send) {
@@ -140,8 +140,8 @@ require_once "../controller/global_actions.php";
         };
 
       // Stomp.js boilerplate
-       var client = Stomp.client('ws://' + window.location.hostname + ':15674/ws');
-      //var client = Stomp.client('ws://' + window.location.hostname + ':8085/ws');
+       //var client = Stomp.client('ws://' + window.location.hostname + ':15674/ws');
+      var client = Stomp.client('ws://' + window.location.hostname + ':8085/ws');
       client.debug = pipe('#second');
 
       var sender = <?php echo '"'.$_GET['user'].'"'; ?>;
@@ -153,7 +153,7 @@ require_once "../controller/global_actions.php";
       var printTag= function(tag){
         console.log(tag);
         console.log($(".userMsg").last());
-      	
+
       };
 
       var print_first = pipe('#first', function(msg) {
@@ -175,7 +175,7 @@ require_once "../controller/global_actions.php";
           client.send('/queue/'+queueSend, {"content-type":"text/plain", "sender":sender}, msg);
           client.send('/queue/'+queueReceive, {"content-type":"text/plain", "sender":sender}, msg);
       });
-      
+
       var on_connect = function(x) {
           id = client.subscribe("/queue/"+queueReceive, function(d) {
               console.log(d.headers.sender+ " "+ sender);
