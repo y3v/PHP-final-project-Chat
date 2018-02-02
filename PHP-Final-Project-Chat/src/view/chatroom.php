@@ -116,6 +116,24 @@ require_once "../controller/message_service.php";
     </div>
 
     <script>
+    function print_start() {
+      var div  = $('#first' + ' div');
+      for (var i = 5; i > 0; i-- ){
+        var lastMessage = lastMessages[i];
+
+          //p = (p === undefined) ? '' : JSON.stringify(p);
+          div.append($('<div class="userMsg">').append($('<p class="userTag">').text(lastMessage.message)));
+          if (lastMessage.authorUname == sender){
+            $("#first .userMsg").last().addClass("sender").prepend($('<span>').text(sender));
+          }
+          else{
+            $("#first .userMsg").last().addClass("receiver").append($('<span>').text(receiver));
+          }
+          div.scrollTop(div.scrollTop() + 10000);
+
+      }
+
+    };
     var lastMessages = <?php $messages = readLastMessages($_GET['user'], $_GET['friend']);
     echo $messages; ?>;
     console.log(lastMessages);
@@ -182,6 +200,7 @@ require_once "../controller/message_service.php";
       });
 
       var on_connect = function(x) {
+
           id = client.subscribe("/queue/"+queueReceive, function(d) {
               console.log(d.headers.sender+ " "+ sender);
               print_first(d.body);
@@ -192,6 +211,8 @@ require_once "../controller/message_service.php";
   				$("#first .userMsg").last().addClass("receiver").append($('<span>').text(receiver));
                }
           }), {"id":"test"};
+
+          print_start();
       };
       var on_error =  function() {
         console.log('error');
