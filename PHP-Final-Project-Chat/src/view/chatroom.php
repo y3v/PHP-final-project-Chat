@@ -141,11 +141,11 @@ require_once "../controller/message_service.php";
 
     };
     var lastMessages = <?php $messages = readLastMessages($_GET['user'], $_GET['friend']);
-    if (strpos($messages, '0') < 0 ){
+    if (strpos($messages, '<br') == false){
       echo $messages;
     }
     else
-      echo 'none'
+      echo 'false';
       ?>;
     console.log(lastMessages);
         var has_had_focus = false;

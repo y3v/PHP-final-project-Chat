@@ -42,8 +42,9 @@ function readLastMessages($authorUname, $recipientUname, $number = 15){
         array_push($messages,$message);
         $count++;
       }*/
-  } else {
-      echo "0 results";
+  }
+  else {
+    $outp = array();
   }
   $conn->close();
 
